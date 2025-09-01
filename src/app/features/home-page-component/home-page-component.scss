@@ -1,0 +1,56 @@
+.title {
+    align-items: center;
+    display: grid;
+    place-items: center;
+    vertical-align: middle;
+}
+
+.bg-img-div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.bg-img {
+    width: 75%;
+    height: 75%;
+    display: block;
+}
+
+.buttons {
+    position: absolute;
+    right: 30rem;
+    top: 50%;
+}
+
+.login-button {
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+
+    text-align: center;
+
+    background-color: #2d5016;
+
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;  
+    border-radius: 0.5rem;
+}
+
+.register-button {
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+
+    text-align: center;
+
+    background-color: #2d5016;
+
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;  
+    border-radius: 0.5rem;
+}
