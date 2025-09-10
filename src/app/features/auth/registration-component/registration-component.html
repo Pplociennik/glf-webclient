@@ -1,0 +1,78 @@
+<div class="registration-container">
+    <form class="registration-form">
+        <div class="logo-section">
+            <img src="/logo.jpg" alt="logo" class="right-setion-logo-img" />
+        </div>
+
+        <div class="welcome-text">Welcome!</div>
+        <div class="welcome-sub-text">Please, fill up the form below and we'll get you started.</div>
+
+        <div class="inputs-section">
+
+            <div class="username-section">
+                <label class="username-input-container">
+                    <span class="username-input-text">Username</span>
+                    <div class="username-input-wrapper">
+                        <img src="/icons/registration-component/username.png" alt="" />
+                        <input class="username-input" type="text" placeholder="Enter username" />
+                    </div>
+                </label>
+            </div>
+
+
+            <div class="email-section">
+                <label class="email-input-container">
+                    <span class="email-input-text">Email</span>
+                    <div class="email-input-wrapper">
+                        <img src="/icons/registration-component/email.png" alt="email-icon" />
+                        <input class="email-input" type="email" placeholder="Enter email" />
+                    </div>
+                </label>
+            </div>
+
+            <div class="password-section">
+                <label class="password-input-container">
+                    <span class="password-input-text">Password</span>
+                    <div class="password-input-wrapper">
+                        <input class="password-input" [type]="showPassword ? 'text' : 'password'"
+                            placeholder="Enter password" />
+                        <img class="password-icon" src="/icons/registration-component/key.png" alt="password-icon" />
+                        @if (!showPassword) {
+                        <img class="eye-icon" src="/icons/registration-component/view.png" alt="view-icon"
+                            (click)="togglePasswordVisibility()" />
+                        } @else {
+                        <img class="eye-icon" src="/icons/registration-component/hide.png" alt="hide-icon"
+                            (click)="togglePasswordVisibility()" />
+                        }
+                    </div>
+                </label>
+            </div>
+
+            <div class="confirm-password-section">
+                <label class="confirm-password-input-container">
+                    <span class="confirm-password-input-text">Confirm Password</span>
+                    <div class="confirm-password-input-wrapper">
+                        <input class="password-input" [type]="showConfirmPassword ? 'text' : 'password'"
+                            placeholder="Confirm password" />
+                        <img class="password-icon" src="/icons/registration-component/key.png" alt="password-icon" />
+                        @if (!showConfirmPassword) {
+                        <img class="eye-icon" src="/icons/registration-component/view.png" alt="view-icon"
+                            (click)="toggleConfirmPasswordVisibility()" />
+                        } @else {
+                        <img class="eye-icon" src="/icons/registration-component/hide.png" alt="hide-icon"
+                            (click)="toggleConfirmPasswordVisibility()" />
+                        }
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="register-button-section">
+            <button class="register-button" type="submit">Register</button>
+        </div>
+
+        <div class="login-link-section">
+            Already have an account?
+            <a href="/login">Login</a>
+        </div>
+    </form>

@@ -17,40 +17,125 @@
     display: block;
 }
 
-.buttons {
+.right-section {
     position: absolute;
     right: 30rem;
-    top: 50%;
-}
+    top: 30%;
+    width: 20rem;
+    height: 30rem;
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(45, 80, 22, 0.08);
+    border: 1px solid #f0f0f0;
+    width: fit-content;
+    height: fit-content;
 
-.login-button {
-    font-size: 17px;
-    font-weight: 600;
-    color: white;
+    .right-setion-logo-img {
+        width: 10rem;
+        height: 10rem;
+        display: block;
+        margin: 0 auto;
+    }
 
-    text-align: center;
+    .register-section {
+        margin-top: 1rem;
 
-    background-color: #2d5016;
+        .register-txt {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;  
-    border-radius: 0.5rem;
-}
+            color: #666;
+        }
+    }
 
-.register-button {
-    font-size: 17px;
-    font-weight: 600;
-    color: white;
+    .btn {
 
-    text-align: center;
+        width: 100%;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        margin-bottom: 1rem;
 
-    background-color: #2d5016;
+        &.login-button {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            border-radius: 0.5rem;
+            background: #2d5016;
+            color: white;
+            box-shadow: 0 4px 15px rgba(45, 80, 22, 0.3);
 
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;  
-    border-radius: 0.5rem;
+            width: 15rem;
+            display: block;
+            margin: 0 auto;
+
+            &:hover {
+                background: #1f3a0f;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(45, 80, 22, 0.4);
+            }
+        }
+
+        &.register-button {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            border-radius: 0.5rem;
+            background: transparent;
+            color: #2d5016;
+            border: 2px solid #2d5016;
+
+            width: 15rem;
+            display: block;
+            margin: 0 auto;
+
+            &:hover {
+                background: #2d5016;
+                color: white;
+                transform: translateY(-2px);
+            }
+        }
+    }
+
+    .features {
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid #f0f0f0;
+  
+        .feature-item {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1rem;
+  
+          .feature-icon {
+            font-size: 1.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f6f0;
+            border-radius: 50%;
+          }
+  
+          .feature-text {
+            color: #666;
+            font-size: 0.95rem;
+          }
+        }
+      }
 }

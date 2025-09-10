@@ -1,6 +1,49 @@
 <div class="login-container">
     <form class="login-form">
-        <input class="email-input" type="email" />
-        <input class="password-input" type="password" />
+        <div class="logo-section">
+            <img src="/logo.jpg" alt="logo" class="right-setion-logo-img" />
+        </div>
+
+        <div class="welcome-text">Welcome Back</div>
+        <div class="welcome-sub-text">Please, sign in to your account</div>
+
+        <div class="inputs-section">
+            <div class="email-input-container">
+                <label class="email-input-text">Email</label>
+                <span class="email-input-wrapper">
+                    <img src="/icons/login-component/email.png" alt="email-icon" />
+                    <input class="email-input" type="email" />
+                </span>
+            </div>
+            <div class="password-input-container">
+                <label class="password-input-text">Password</label>
+                <span class="password-input-wrapper">
+                    <input [type]="showPassword ? 'text' : 'password'" class="password-input" />
+                    <img class="password-input-icon" src="/icons/login-component/key.png" alt="password-icon" />
+                    @if (!showPassword) {
+                    <img class="eye-icon" src="/icons/login-component/view.png" alt="view-icon"
+                        (click)="togglePasswordVisibility()" />
+                    } @else {
+                    <img class="eye-icon" src="/icons/login-component/hide.png" alt="hide-icon"
+                        (click)="togglePasswordVisibility()" />
+                    }
+                </span>
+            </div>
+
+            <div class="error-message">
+                <span class="error-message-text"></span>
+            </div>
+
+            <div class="forgot-password">
+                <a href="/forgot-password">Forgot Password?</a>
+            </div>
+
+            <button class="login-button" type="submit">Sign in</button>
+        </div>
+
+        <div class="register-link">
+            Don't have an account yet?<br>
+            <a href="/register">Get Started for Free</a>
+        </div>
     </form>
 </div>
