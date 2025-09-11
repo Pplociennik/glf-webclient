@@ -1,0 +1,21 @@
+@if (showTooltip && requirements) {
+<div class="tooltip">
+    <ul>
+        @for (requirement of requirements; track $index) {
+        <li>
+            <span class="tooltip-label-wrapper">
+                @if (requirement.isValid) {
+                <label class="tooltip-positive-label">{{ requirement.description }}</label>
+                <img class="tooltip-positive-icon" src="/icons/registration-component/tooltip/positive-icon.png"
+                    alt="✓" />
+                } @else {
+                <label class="tooltip-negative-label">{{ requirement.description }}</label>
+                <img class="tooltip-negative-icon" src="/icons/registration-component/tooltip/negative-icon.png"
+                    alt="✗" />
+                }
+            </span>
+        </li>
+        }
+    </ul>
+</div>
+}

@@ -8,71 +8,101 @@
         <div class="welcome-sub-text">Please, fill up the form below and we'll get you started.</div>
 
         <div class="inputs-section">
-
             <div class="username-section">
-                <label class="username-input-container">
-                    <span class="username-input-text">Username</span>
+                <div class="username-input-container">
+                    <label class="username-input-text">Username</label>
                     <div class="username-input-wrapper">
                         <img src="/icons/registration-component/username.png" alt="" />
-                        <input class="username-input" type="text" placeholder="Enter username" />
+                        <input class="username-input" type="text" name="username" placeholder="Enter username"
+                            (focus)="showUsernameTooltip = true" (blur)="showUsernameTooltip = false"
+                            [(ngModel)]="username" />
                     </div>
-                </label>
+                </div>
+
+                <app-input-requirement-tooltip-component 
+                    [showTooltip]="showUsernameTooltip"
+                    [requirements]="usernameRequirements"
+                    [value]="username"
+                    (validityChange)="onUsernameValidityChange($event)">
+                </app-input-requirement-tooltip-component>
             </div>
 
-
             <div class="email-section">
-                <label class="email-input-container">
-                    <span class="email-input-text">Email</span>
+                <div class="email-input-container">
+                    <label class="email-input-text">Email</label>
                     <div class="email-input-wrapper">
                         <img src="/icons/registration-component/email.png" alt="email-icon" />
-                        <input class="email-input" type="email" placeholder="Enter email" />
+                        <input class="email-input" type="email" name="email" placeholder="Enter email"
+                            (focus)="showEmailTooltip = true" (blur)="showEmailTooltip = false" [(ngModel)]="email" />
                     </div>
-                </label>
+                </div>
+
+                <app-input-requirement-tooltip-component 
+                    [showTooltip]="showEmailTooltip"
+                    [requirements]="emailRequirements"
+                    [value]="email"
+                    (validityChange)="onEmailValidityChange($event)">
+                </app-input-requirement-tooltip-component>
             </div>
 
             <div class="password-section">
-                <label class="password-input-container">
-                    <span class="password-input-text">Password</span>
+                <div class="password-input-container">
+                    <label class="password-input-text">Password</label>
                     <div class="password-input-wrapper">
                         <input class="password-input" [type]="showPassword ? 'text' : 'password'"
-                            placeholder="Enter password" />
+                            name="password" placeholder="Enter password" (focus)="showPasswordTooltip = true"
+                            (blur)="showPasswordTooltip = false" [(ngModel)]="password" />
                         <img class="password-icon" src="/icons/registration-component/key.png" alt="password-icon" />
-                        @if (!showPassword) {
-                        <img class="eye-icon" src="/icons/registration-component/view.png" alt="view-icon"
-                            (click)="togglePasswordVisibility()" />
-                        } @else {
-                        <img class="eye-icon" src="/icons/registration-component/hide.png" alt="hide-icon"
-                            (click)="togglePasswordVisibility()" />
-                        }
+                        <img class="eye-icon"
+                            src="/icons/registration-component/{{ showPassword ? 'hide' : 'view' }}.png"
+                            alt="{{ showPassword ? 'hide-icon' : 'view-icon' }}" (click)="togglePasswordVisibility()" />
                     </div>
-                </label>
+                </div>
+
+                <app-input-requirement-tooltip-component 
+                    [showTooltip]="showPasswordTooltip"
+                    [requirements]="passwordRequirements"
+                    [value]="password"
+                    (validityChange)="onPasswordValidityChange($event)">
+                </app-input-requirement-tooltip-component>
             </div>
 
             <div class="confirm-password-section">
-                <label class="confirm-password-input-container">
-                    <span class="confirm-password-input-text">Confirm Password</span>
+                <div class="confirm-password-input-container">
+                    <label class="confirm-password-input-text">Confirm Password</label>
                     <div class="confirm-password-input-wrapper">
                         <input class="password-input" [type]="showConfirmPassword ? 'text' : 'password'"
-                            placeholder="Confirm password" />
+                            name="confirmPassword" placeholder="Confirm password" (focus)="showConfirmPasswordTooltip = true"
+                            (blur)="showConfirmPasswordTooltip = false" [(ngModel)]="confirmPassword" />
                         <img class="password-icon" src="/icons/registration-component/key.png" alt="password-icon" />
-                        @if (!showConfirmPassword) {
-                        <img class="eye-icon" src="/icons/registration-component/view.png" alt="view-icon"
+                        <img class="eye-icon"
+                            src="/icons/registration-component/{{ showConfirmPassword ? 'hide' : 'view' }}.png"
+                            alt="{{ showConfirmPassword ? 'hide-icon' : 'view-icon' }}"
                             (click)="toggleConfirmPasswordVisibility()" />
-                        } @else {
-                        <img class="eye-icon" src="/icons/registration-component/hide.png" alt="hide-icon"
-                            (click)="toggleConfirmPasswordVisibility()" />
-                        }
                     </div>
-                </label>
+                </div>
+
+                <app-input-requirement-tooltip-component 
+                    [showTooltip]="showConfirmPasswordTooltip"
+                    [requirements]="confirmPasswordRequirements"
+                    [value]="confirmPassword"
+                    (validityChange)="onConfirmPasswordValidityChange($event)">
+                </app-input-requirement-tooltip-component>
+            </div>
+
+            <div class="register-button-section">
+                <button class="register-button" type="button" [disabled]="!isFormValid">
+                    Register
+                    @if (!isFormValid) {
+                      <span class="tooltip">Please complete all fields correctly</span>
+                    }
+                </button>
+            </div>
+
+            <div class="login-link-section">
+                Already have an account?
+                <a href="/login">Login</a>
             </div>
         </div>
-
-        <div class="register-button-section">
-            <button class="register-button" type="submit">Register</button>
-        </div>
-
-        <div class="login-link-section">
-            Already have an account?
-            <a href="/login">Login</a>
-        </div>
     </form>
+</div>
