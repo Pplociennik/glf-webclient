@@ -8,24 +8,25 @@
         <img src="/logo.jpg" alt="logo" class="right-setion-logo-img" />
     </div>
     <div class="login-section">
-        <button class="btn login-button" (click)="goToLogin()">Sign in</button>
+        <button class="btn login-button" (click)="goToLogin()">{{ 'homePage.loginButton' | transloco }}</button>
     </div>
     <div class="register-section">
-        <div class="register-txt">Don't have an account yet?</div>
-        <button class="btn register-button" (click)="goToRegister()">Get Started for Free</button>
+        <div class="register-txt">{{ 'homePage.registerTxt' | transloco }}</div>
+        <button class="btn register-button" (click)="goToRegister()">{{ 'homePage.registerButton' | transloco
+            }}</button>
     </div>
 
     <div class="features">
         <div class="feature-item">
             <span class="feature-icon">🌱</span>
-            <span class="feature-text">Set and track personal goals</span>
+            <span class="feature-text">{{ 'homePage.feature1' | transloco }}</span>
         </div>
         <div class="feature-item">
             <span class="feature-icon">👥</span>
-            <span class="feature-text">Connect with like-minded people</span>
+            <span class="feature-text">{{ 'homePage.feature2' | transloco }}</span>
         </div>
         <div class="feature-item">
             <span class="feature-icon">🏆</span>
-            <span class="feature-text">Achieve more together</span>
+            <span class="feature-text">{{ 'homePage.feature3' | transloco }}</span>
         </div>
     </div>

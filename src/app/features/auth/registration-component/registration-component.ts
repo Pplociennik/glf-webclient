@@ -1,16 +1,18 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { InputRequirementTooltipComponent } from '../../../shared/components/input-requirement-tooltip-component/input-requirement-tooltip-component';
 import { InputRequirementModel } from '../../../shared/models/input-requirement-model';
 import { UsernameInputValidator } from '../../../services/auth/validation/username-input-validator';
 import { EmailInputValidator } from '../../../services/auth/validation/email-input-validator';
 import { PasswordInputValidator } from '../../../services/auth/validation/password-input-validator';
 import { FormsModule } from '@angular/forms';
+import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-registration-component',
   standalone: true,
-  imports: [CommonModule, InputRequirementTooltipComponent, FormsModule],
+  imports: [CommonModule, InputRequirementTooltipComponent, FormsModule, TranslocoModule, RouterLink],
   templateUrl: './registration-component.html',
   styleUrls: ['./registration-component.scss']
 })
@@ -60,6 +62,8 @@ export class RegistrationComponent {
   showPasswordTooltip = false;
   showConfirmPasswordTooltip = false;
 
+  activeLang: string = '';
+
   usernameRequirements: InputRequirementModel[] = [];
   emailRequirements: InputRequirementModel[] = [];
   passwordRequirements: InputRequirementModel[] = [];
@@ -68,34 +72,35 @@ export class RegistrationComponent {
   constructor(
     private usernameInputValidator: UsernameInputValidator,
     private emailInputValidator: EmailInputValidator,
-    private passwordInputValidator: PasswordInputValidator
+    private passwordInputValidator: PasswordInputValidator,
+    private translocoService: TranslocoService
   ) {
     this.initializeRequirements();
   }
 
   private initializeRequirements() {
     this.usernameRequirements = [
-      { description: 'At least 3 characters', validator: this.usernameInputValidator.validateUsernameMinimumLength, isValid: false },
-      { description: 'At most 20 characters', validator: this.usernameInputValidator.validateUsernameMaximumLength, isValid: true },
-      { description: 'Only letters, numbers, and underscores', validator: this.usernameInputValidator.validateUsernameCharacters, isValid: false },
+      { description: 'registrationRequirements.username.minimumLength', validator: this.usernameInputValidator.validateUsernameMinimumLength, isValid: false },
+      { description: 'registrationRequirements.username.maximumLength', validator: this.usernameInputValidator.validateUsernameMaximumLength, isValid: true },
+      { description: 'registrationRequirements.username.characters', validator: this.usernameInputValidator.validateUsernameCharacters, isValid: false },
     ];
 
     this.emailRequirements = [
-      { description: 'Valid email address', validator: this.emailInputValidator.validateEmail, isValid: false },
+      { description: 'registrationRequirements.email.validEmail', validator: this.emailInputValidator.validateEmail, isValid: false },
     ];
 
     this.passwordRequirements = [
-      { description: 'At least 8 characters', validator: this.passwordInputValidator.validatePasswordMinimumLength, isValid: false },
-      { description: 'At most 256 characters', validator: this.passwordInputValidator.validatePasswordMaximumLength, isValid: true },
-      { description: 'At least one uppercase letter', validator: this.passwordInputValidator.validateAtLeastOneUppercaseLetter, isValid: false },
-      { description: 'At least one lowercase letter', validator: this.passwordInputValidator.validateAtLeastOneLowercaseLetter, isValid: false },
-      { description: 'At least one number', validator: this.passwordInputValidator.validateAtLeastOneNumber, isValid: false },
-      { description: 'At least one special character', validator: this.passwordInputValidator.validateAtLeastOneSpecialCharacter, isValid: false }
+      { description: 'registrationRequirements.password.minimumLength', validator: this.passwordInputValidator.validatePasswordMinimumLength, isValid: false },
+      { description: 'registrationRequirements.password.maximumLength', validator: this.passwordInputValidator.validatePasswordMaximumLength, isValid: true },
+      { description: 'registrationRequirements.password.uppercaseLetter', validator: this.passwordInputValidator.validateAtLeastOneUppercaseLetter, isValid: false },
+      { description: 'registrationRequirements.password.lowercaseLetter', validator: this.passwordInputValidator.validateAtLeastOneLowercaseLetter, isValid: false },
+      { description: 'registrationRequirements.password.number', validator: this.passwordInputValidator.validateAtLeastOneNumber, isValid: false },
+      { description: 'registrationRequirements.password.specialCharacter', validator: this.passwordInputValidator.validateAtLeastOneSpecialCharacter, isValid: false }
     ];
 
     this.confirmPasswordRequirements = [
       {
-        description: 'Passwords must match',
+        description: 'registrationRequirements.confirmPassword.match',
         validator: (confirmPassword: string) => this.password === confirmPassword,
         isValid: this.password === this.confirmPassword
       }

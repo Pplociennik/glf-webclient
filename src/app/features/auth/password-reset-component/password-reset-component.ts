@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-password-reset-component',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, TranslocoModule],
   templateUrl: './password-reset-component.html',
   styleUrl: './password-reset-component.scss'
 })

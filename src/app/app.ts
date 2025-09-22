@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavBarComponent } from './shared/components/nav-bar-component/nav-bar-component';
+import { LanguageService } from './services/lang/language-service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,10 @@ import { NavBarComponent } from './shared/components/nav-bar-component/nav-bar-c
 })
 export class App {
   protected readonly title = signal('goaleaf-client');
+
+  constructor(private languageService: LanguageService) { }
+
+  ngOnInit(): void {
+    this.languageService.initializeLanguage();
+  }
 }

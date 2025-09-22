@@ -4,19 +4,19 @@
             <img src="/logo.jpg" alt="logo" class="right-setion-logo-img" />
         </div>
 
-        <div class="welcome-text">Welcome Back</div>
-        <div class="welcome-sub-text">Please, sign in to your account</div>
+        <div class="welcome-text">{{ 'loginComponent.welcomeText' | transloco }}</div>
+        <div class="welcome-sub-text">{{ 'loginComponent.welcomeSubText' | transloco }}</div>
 
         <div class="inputs-section">
             <div class="email-input-container">
-                <label class="email-input-text">Email</label>
+                <label class="email-input-text">{{ 'loginComponent.emailInputText' | transloco }}</label>
                 <span class="email-input-wrapper">
                     <img src="/icons/login-component/email.png" alt="email-icon" />
                     <input class="email-input" type="email" />
                 </span>
             </div>
             <div class="password-input-container">
-                <label class="password-input-text">Password</label>
+                <label class="password-input-text">{{ 'loginComponent.passwordInputText' | transloco }}</label>
                 <span class="password-input-wrapper">
                     <input [type]="showPassword ? 'text' : 'password'" class="password-input" />
                     <img class="password-input-icon" src="/icons/login-component/key.png" alt="password-icon" />
@@ -35,15 +35,15 @@
             </div>
 
             <div class="forgot-password">
-                <a href="/password-reset">Forgot Password?</a>
+                <a routerLink="/password-reset">{{ 'loginComponent.forgotPassword' | transloco }}</a>
             </div>
 
-            <button class="login-button" type="submit">Sign in</button>
+            <button class="login-button" type="submit">{{ 'loginComponent.loginButton' | transloco }}</button>
         </div>
 
         <div class="register-link">
-            Don't have an account yet?<br>
-            <a href="/register">Get Started for Free</a>
+            {{ 'loginComponent.registerLink' | transloco }}<br>
+            <a routerLink="/register">{{ 'loginComponent.registerLink2' | transloco }}</a>
         </div>
     </form>
 </div>

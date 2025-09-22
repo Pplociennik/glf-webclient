@@ -1,0 +1,65 @@
+{
+    "homePage": {
+        "feature1": "Persönliche Ziele verfolgen",
+        "feature2": "Mit Gleichgesinnten verbinden",
+        "feature3": "Mehr gemeinsam erreichen",
+        "loginButton": "Anmelden",
+        "registerTxt": "Noch kein Konto?",
+        "registerButton": " Kostenlos registrieren"
+    },
+    "loginComponent": {
+        "welcomeText": "Willkommen zurück",
+        "welcomeSubText": "Bitte melden Sie sich an",
+        "emailInputText": "Email",
+        "passwordInputText": "Passwort",
+        "forgotPassword": "Passwort vergessen?",
+        "loginButton": "Anmelden",
+        "registerLink": "Noch kein Konto?",
+        "registerLink2": " Kostenlos registrieren"
+    },
+    "registrationComponent": {
+        "welcomeText": "Willkommen",
+        "welcomeSubText": "Bitte, füllen Sie das Formular unten aus und wir werden Sie loslegen.",
+        "usernameInputText": "Benutzername",
+        "usernameInputPlaceholder": "Geben Sie Ihren Benutzernamen ein",
+        "emailInputText": "Email",
+        "emailInputPlaceholder": "Geben Sie Ihre E-Mail ein",
+        "passwordInputText": "Passwort",
+        "passwordInputPlaceholder": "Geben Sie Ihr Passwort ein",
+        "confirmPasswordInputText": "Bestätige Passwort",
+        "confirmPasswordInputPlaceholder": "Bestätige dein Passwort",
+        "registerButton": "Registrieren",
+        "registerButtonTooltip": "Bitte, füllen Sie das Formular unten aus und wir werden Sie loslegen.",
+        "loginLink": "Bereits ein Konto?",
+        "loginLink2": "Anmelden"
+    },
+    "registrationRequirements": {
+        "username": {
+            "minimumLength": "Mindestens 3 Zeichen",
+            "maximumLength": "Maximal 20 Zeichen",
+            "characters": "Nur Buchstaben, Zahlen und Unterstriche"
+        },
+        "email": {
+            "validEmail": "Gültige E-Mail-Adresse"
+        },
+        "password": {
+            "minimumLength": "Mindestens 8 Zeichen",
+            "maximumLength": "Maximal 256 Zeichen",
+            "uppercaseLetter": "Mindestens eine Großbuchstaben",
+            "lowercaseLetter": "Mindestens eine Kleinbuchstaben",
+            "number": "Mindestens eine Nummer",
+            "specialCharacter": "Mindestens ein Sonderzeichen"
+        },
+        "confirmPassword": {
+            "match": "Passwörter müssen übereinstimmen"
+        }
+    },
+    "passwordResetComponent": {
+        "title": "Passwort zurücksetzen",
+        "subTitle": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link, um Ihr Passwort zurückzusetzen.",
+        "emailInputPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
+        "sendResetLink": "Senden Sie den Link",
+        "sendResetLinkTooltip": "Bitte geben Sie Ihre E-Mail-Adresse ein",
+        "passwordResetSuccessText": "Wenn die E-Mail-Adresse, die Sie eingegeben haben, in unserem System existiert, werden wir Ihnen einen Passwort-Reset-Link senden. Wenn Sie die E-Mail nicht in Ihrem Posteingang finden, überprüfen Sie bitte Ihre Spam- oder Spam-Ordner."
+    }
+}

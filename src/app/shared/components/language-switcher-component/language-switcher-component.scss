@@ -1,0 +1,41 @@
+.language-switcher {
+  position: relative;
+  display: inline-block;
+  min-width: 120px;
+  height: 40px;
+  
+  .language-select {
+    padding: 8px 32px 8px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #2d5016;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      border-color: #bdbdbd;
+    }
+
+    &:focus {
+      border-color: #2d5016;
+      box-shadow: 0 0 0 2px rgba(45, 80, 22, 0.2);
+    }
+  }
+
+  // Custom dropdown arrow for Firefox
+  @-moz-document url-prefix() {
+    .language-select {
+      text-indent: 0.01px;
+      text-overflow: '';
+    }
+  }
+
+  // Hide default arrow in IE10+
+  select::-ms-expand {
+    display: none;
+  }
+}

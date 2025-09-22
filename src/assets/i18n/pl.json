@@ -1,0 +1,65 @@
+{
+    "homePage": {
+        "feature1": "Osiągaj założone cele",
+        "feature2": "Łącz się z ludźmi",
+        "feature3": "Razem osiągajcie więcej",
+        "loginButton": "Zaloguj się",
+        "registerTxt": "Nie masz jeszcze konta?",
+        "registerButton": "Zacznij za darmo"
+    },
+    "loginComponent": {
+        "welcomeText": "Witaj ponownie",
+        "welcomeSubText": "Proszę się zalogować",
+        "emailInputText": "Email",
+        "passwordInputText": "Hasło",
+        "forgotPassword": "Zapomniałeś hasła?",
+        "loginButton": "Zaloguj się",
+        "registerLink": "Nie masz jeszcze konta?",
+        "registerLink2": "Zacznij za darmo"
+    },
+    "registrationComponent": {
+        "welcomeText": "Witaj",
+        "welcomeSubText": "Proszę, wypełnij formularz poniżej i zacznij za darmo.",
+        "usernameInputText": "Nazwa użytkownika",
+        "usernameInputPlaceholder": "Wprowadź swoją nazwę użytkownika",
+        "emailInputText": "Email",
+        "emailInputPlaceholder": "Wprowadź swój adres email",
+        "passwordInputText": "Hasło",
+        "passwordInputPlaceholder": "Wprowadź swoje hasło",
+        "confirmPasswordInputText": "Potwierdź hasło",
+        "confirmPasswordInputPlaceholder": "Potwierdź swoje hasło",
+        "registerButton": "Zarejestruj się",
+        "registerButtonTooltip": "Proszę, wypełnij formularz poniżej i zacznij za darmo.",
+        "loginLink": "Masz już konto?",
+        "loginLink2": "Zaloguj się"
+    },
+    "registrationRequirements": {
+        "username": {
+            "minimumLength": "Minimalnie 3 znaki",
+            "maximumLength": "Maxymalnie 20 znaków",
+            "characters": "Tylko litery, cyfry i podkreślenia"
+        },
+        "email": {
+            "validEmail": "Wprowadź poprawny adres email"
+        },
+        "password": {
+            "minimumLength": "Minimalnie 8 znaków",
+            "maximumLength": "Maxymalnie 256 znaków",
+            "uppercaseLetter": "Minimalnie jedna duża litera",
+            "lowercaseLetter": "Minimalnie jedna mała litera",
+            "number": "Minimalnie jedna cyfra",
+            "specialCharacter": "Minimalnie jeden znak specjalny"
+        },
+        "confirmPassword": {
+            "match": "Hasła muszą być identyczne"
+        }
+    },
+    "passwordResetComponent": {
+        "title": "Resetuj swoje hasło",
+        "subTitle": "Wprowadź swój adres email i wyślemy Ci link do resetowania hasła.",
+        "emailInputPlaceholder": "Wprowadź swój adres email",
+        "sendResetLink": "Wyślij link",
+        "sendResetLinkTooltip": "Proszę wprowadzić swój adres email",
+        "passwordResetSuccessText": "Jeśli adres email, który wprowadziłeś, istnieje w naszej bazie danych, wyślemy Ci link do resetowania hasła. Jeśli nie znajdziesz e-maila w swojej skrzynce, sprawdź proszę folder spam."
+    }
+}

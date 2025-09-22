@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-home-page-component',
   standalone: true,
-  imports: [],
+  imports: [TranslocoModule],
   templateUrl: './home-page-component.html',
   styleUrl: './home-page-component.scss'
 })

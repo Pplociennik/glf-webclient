@@ -5,11 +5,11 @@
         <li>
             <span class="tooltip-label-wrapper">
                 @if (requirement.isValid) {
-                <label class="tooltip-positive-label">{{ requirement.description }}</label>
+                <label class="tooltip-positive-label">{{ requirement.description | transloco }}</label>
                 <img class="tooltip-positive-icon" src="/icons/registration-component/tooltip/positive-icon.png"
                     alt="✓" />
                 } @else {
-                <label class="tooltip-negative-label">{{ requirement.description }}</label>
+                <label class="tooltip-negative-label">{{ requirement.description | transloco }}</label>
                 <img class="tooltip-negative-icon" src="/icons/registration-component/tooltip/negative-icon.png"
                     alt="✗" />
                 }

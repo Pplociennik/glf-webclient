@@ -1,10 +1,11 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { InputRequirementModel } from '../../models/input-requirement-model';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-input-requirement-tooltip-component',
   standalone: true,
-  imports: [],
+  imports: [TranslocoModule],
   templateUrl: './input-requirement-tooltip-component.html',
   styleUrl: './input-requirement-tooltip-component.scss'
 })
