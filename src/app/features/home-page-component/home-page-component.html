@@ -1,32 +1,31 @@
-<div class="bg-img-div">
+<div class="container">
+
     <img src="/bg_drawing.png" alt="bgImage" class="bg-img" />
-</div>
 
+    <div class="right-side">
+        <div class="right-section">
+            <div class="logo-section">
+                <img src="/logo.jpg" alt="logo" class="right-setion-logo-img" />
+            </div>
+            <button class="btn login-button" (click)="goToLogin()">{{ 'homePage.loginButton' | transloco }}</button>
 
-<div class="right-section">
-    <div class="logo-section">
-        <img src="/logo.jpg" alt="logo" class="right-setion-logo-img" />
-    </div>
-    <div class="login-section">
-        <button class="btn login-button" (click)="goToLogin()">{{ 'homePage.loginButton' | transloco }}</button>
-    </div>
-    <div class="register-section">
-        <div class="register-txt">{{ 'homePage.registerTxt' | transloco }}</div>
-        <button class="btn register-button" (click)="goToRegister()">{{ 'homePage.registerButton' | transloco
-            }}</button>
-    </div>
+            <div class="register-txt">{{ 'homePage.registerTxt' | transloco }}</div>
+            <button class="btn register-button" (click)="goToRegister()">{{ 'homePage.registerButton' | transloco
+                }}</button>
 
-    <div class="features">
-        <div class="feature-item">
-            <span class="feature-icon">🌱</span>
-            <span class="feature-text">{{ 'homePage.feature1' | transloco }}</span>
-        </div>
-        <div class="feature-item">
-            <span class="feature-icon">👥</span>
-            <span class="feature-text">{{ 'homePage.feature2' | transloco }}</span>
-        </div>
-        <div class="feature-item">
-            <span class="feature-icon">🏆</span>
-            <span class="feature-text">{{ 'homePage.feature3' | transloco }}</span>
+            <div class="features">
+                <div class="feature-item">
+                    <span class="feature-icon">🌱</span>
+                    <span class="feature-text">{{ 'homePage.feature1' | transloco }}</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">👥</span>
+                    <span class="feature-text">{{ 'homePage.feature2' | transloco }}</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🏆</span>
+                    <span class="feature-text">{{ 'homePage.feature3' | transloco }}</span>
+                </div>
+            </div>
         </div>
     </div>
