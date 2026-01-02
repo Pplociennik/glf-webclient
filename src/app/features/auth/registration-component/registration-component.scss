@@ -100,24 +100,22 @@ $transition: all 0.3s ease;
 
 .registration-form {
     background: $color-white;
-    padding: 2.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
     border-radius: 16px;
     box-shadow: $shadow-sm;
     width: 100%;
     max-width: 420px;
     margin: 0 auto;
-}
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 
-// Logo Section
-.logo-section {
-    text-align: center;
-    margin-bottom: 2rem;
-
-    .right-setion-logo-img {
+    .main-logo-img {
         width: 80px;
         height: 80px;
         border-radius: 16px;
-        object-fit: cover;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 }
@@ -134,14 +132,12 @@ $transition: all 0.3s ease;
 .welcome-sub-text {
     color: $color-text-light;
     text-align: center;
-    margin-bottom: 2rem;
     font-size: 0.95rem;
+    padding-bottom: 1.25rem;
 }
 
 // Form Inputs
 .inputs-section {
-    margin-top: 2.5rem;
-    padding-top: 2rem;
     border-top: 1px solid #f0f0f0;
 }
 
@@ -152,8 +148,51 @@ $transition: all 0.3s ease;
 
 // Input Sections
 [class$='-section'] {
-    margin-top: 1.25rem;
     position: relative;
+    margin-bottom: 1.5rem;
+
+    // Tooltip styling
+    .tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        pointer-events: none;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 1rem;
+            border-width: 0.5rem;
+            border-style: solid;
+            border-color: transparent transparent #333 transparent;
+        }
+    }
+
+    // Show tooltip on hover/focus
+    &:hover .tooltip,
+    &:focus-within .tooltip {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.inputs-section {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
 
     [class$='-input-container'] {
         display: block;

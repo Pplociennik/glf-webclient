@@ -36,7 +36,7 @@
     "registrationRequirements": {
         "username": {
             "minimumLength": "Minimalnie 3 znaki",
-            "maximumLength": "Maxymalnie 20 znaków",
+            "maximumLength": "Maksymalnie 20 znaków",
             "characters": "Tylko litery, cyfry i podkreślenia"
         },
         "email": {
@@ -44,7 +44,7 @@
         },
         "password": {
             "minimumLength": "Minimalnie 8 znaków",
-            "maximumLength": "Maxymalnie 256 znaków",
+            "maximumLength": "Maksymalnie 256 znaków",
             "uppercaseLetter": "Minimalnie jedna duża litera",
             "lowercaseLetter": "Minimalnie jedna mała litera",
             "number": "Minimalnie jedna cyfra",

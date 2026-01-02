@@ -88,6 +88,7 @@ $transition: all 0.3s ease;
   justify-content: center;
   align-items: center;
   height: 100%;
+  background: linear-gradient(135deg, #f8f6f0 0%, #e8f5e9 100%);
 
   .login-form {
     background: $color-white;
