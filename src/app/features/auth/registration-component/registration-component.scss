@@ -286,10 +286,10 @@ $transition: all 0.3s ease;
         
         .tooltip {
             position: absolute;
-            bottom: 100%;
+            background-color: #333;
+            top: 120%;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #333;
             color: white;
             padding: 5px 10px;
             border-radius: 4px;
@@ -299,14 +299,10 @@ $transition: all 0.3s ease;
             opacity: 0;
             visibility: hidden;
             transition: all 0.2s ease;
-            z-index: 10;
-            pointer-events: none;
             
             &::after {
                 content: '';
                 position: absolute;
-                top: 100%;
-                left: 50%;
                 margin-left: -5px;
                 border-width: 5px;
                 border-style: solid;
@@ -317,7 +313,6 @@ $transition: all 0.3s ease;
         &:disabled:hover .tooltip {
             opacity: 1;
             visibility: visible;
-            bottom: calc(100% + 5px);
         }
         padding: 14px;
         background: $color-primary;
