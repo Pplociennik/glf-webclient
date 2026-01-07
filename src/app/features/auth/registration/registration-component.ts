@@ -8,6 +8,8 @@ import { EmailInputValidator } from '../../../services/auth/validation/email-inp
 import { PasswordInputValidator } from '../../../services/auth/validation/password-input-validator';
 import { FormsModule } from '@angular/forms';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
+import { AuthService } from '../../../services/auth/auth-service';
+import { RegistrationModel } from '../../../shared/models/auth/registration-model';
 
 @Component({
   selector: 'app-registration-component',
@@ -73,7 +75,8 @@ export class RegistrationComponent {
     private usernameInputValidator: UsernameInputValidator,
     private emailInputValidator: EmailInputValidator,
     private passwordInputValidator: PasswordInputValidator,
-    private translocoService: TranslocoService
+    private translocoService: TranslocoService,
+    private authService : AuthService
   ) {
     this.initializeRequirements();
   }
@@ -113,6 +116,29 @@ export class RegistrationComponent {
 
   toggleConfirmPasswordVisibility() {
     this.showConfirmPassword = !this.showConfirmPassword;
+  }
+
+  onSubmit() {
+    if (!this.isFormValid)
+    {
+      return;
+    }
+
+    const registrationData : RegistrationModel = {
+      email: this.email,
+      username: this.username,
+      password: this.password,
+      repeatPassword: this.confirmPassword
+    }
+
+    this.authService.register(registrationData).subscribe({
+      next: (response) => {
+        console.log('sukces');
+      },
+      error: (error) => {
+        console.error('blad');
+      }
+    })
   }
 
 }

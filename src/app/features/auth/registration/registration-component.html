@@ -86,7 +86,7 @@
             </div>
 
             <div class="register-button-section">
-                <button class="register-button" type="button" [disabled]="!isFormValid">
+                <button class="register-button" type="button" [disabled]="!isFormValid" (click)="onSubmit()">
                     {{'registrationComponent.registerButton' | transloco}}
                     @if (!isFormValid) {
                     <span class="tooltip">{{'registrationComponent.registerButtonTooltip' | transloco}}</span>

@@ -1,13 +1,13 @@
 /**
- * Production environment configuration.
+ * Development environment configuration.
  * Use baseUrl + ApiPaths + endpoints to build full API URLs.
  *
  * Example: ${baseUrl}${ApiPaths.Auth}${endpoints.login}
- * Result: https://api.goaleaf.com/glf-accounts/api/auth/login
+ * Result: http://localhost:8072/glf-accounts/api/auth/login
  */
 export const environment = {
-  production: true,
-  baseUrl: 'https://localhost:8072/api', // Production API Gateway URL
+  production: false,
+  baseUrl: 'http://localhost:8072', // Development API Gateway URL
 
   /**
    * Endpoint paths from REST controller methods.
