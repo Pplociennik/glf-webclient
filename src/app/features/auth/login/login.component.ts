@@ -1,0 +1,164 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { NavBarComponent } from '../../../shared/components/navigation/nav-bar-component/nav-bar.component';
+import { Router, RouterLink } from '@angular/router';
+import { TranslocoLoader, TranslocoModule, TranslocoService } from '@ngneat/transloco';
+import { AuthService } from '../../../services/auth/auth-service';
+import { LoginModel } from '../../../shared/models/auth/authentication-request-model';
+import { FormsModule } from '@angular/forms';
+import { UserTokenManagementService } from '../../../services/user-token-management-service';
+import { OperationInfoBarComponent } from '../../../shared/components/info/operation-info-bar/operation-info-bar.component';
+import { StringNotEmptyValidatorService } from '../../../services/auth/validation/common/string-not-empty-validator/string-not-empty-validator.service';
+import { InputRequirementModel } from '../../../shared/models/input-requirement-model';
+import { InputRequirementTooltipComponent } from '../../../shared/components/input-requirement-tooltip-component/input-requirement-tooltip.component';
+import { GeolocationService } from '../../../services/geolocation/geolocation.service';
+import { DeviceInfoService } from '../../../services/device/device-info.service';
+import { EmailInputValidator } from '../../../services/auth/validation/registration.component/email-input-validator';
+
+/**
+ * Component for user login functionality.
+ * Handles user authentication and redirects to dashboard on success.
+ */
+@Component({
+  selector: 'app-login-component',
+  standalone: true,
+  imports: [
+    TranslocoModule,
+    RouterLink,
+    FormsModule,
+    OperationInfoBarComponent,
+    InputRequirementTooltipComponent,
+  ],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss',
+})
+export class LoginComponent implements OnInit {
+  @Input() email!: string;
+  @Input() password!: string;
+  showPassword: boolean = false;
+
+  showError: boolean = false;
+  errorMessage: string = '';
+
+  operationSuccess: boolean = false;
+
+  buttonActive: boolean = false;
+
+  isFormValid: boolean = false;
+
+  emailRequirements: InputRequirementModel[] = [];
+  passwordRequirements: InputRequirementModel[] = [];
+  isEmailNotEmpty: boolean = false;
+  isEmailCorrect: boolean = false;
+  isPasswordNotEmpty: boolean = false;
+  showEmailTooltip: boolean = false;
+  showPasswordTooltip: boolean = false;
+
+  private userLocation: string = '';
+
+  constructor(
+    private router: Router,
+    private translocoService: TranslocoService,
+    private authService: AuthService,
+    private userTokenService: UserTokenManagementService,
+    private stringNotEmptyValidator: StringNotEmptyValidatorService,
+    private geolocationService: GeolocationService,
+    private deviceInfoService: DeviceInfoService,
+    private emailCorrectValidator: EmailInputValidator
+  ) {
+    this.initializeRequirements();
+  }
+
+  ngOnInit(): void {
+    this.geolocationService.getLocationString().subscribe((location) => {
+      this.userLocation = location;
+    });
+  }
+
+  /**
+   * Navigates to the registration page.
+   */
+  goToRegister() {
+    this.router.navigate(['/register']);
+  }
+
+  /**
+   * Toggles password field visibility between hidden and visible.
+   */
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
+  onEmailInputChange(isValid: boolean) {
+    this.isEmailNotEmpty = isValid;
+    this.isEmailCorrect = isValid;
+    this.updateFormValidity();
+  }
+  onPasswordInputChange(isValid: boolean) {
+    this.isPasswordNotEmpty = isValid;
+    this.updateFormValidity();
+  }
+
+  updateFormValidity() {
+    this.isFormValid = this.isEmailNotEmpty && this.isPasswordNotEmpty;
+    this.buttonActive = this.isFormValid;
+  }
+
+  private initializeRequirements() {
+    this.emailRequirements = [
+      {
+        description: 'loginRequirements.email.notEmpty',
+        validator: this.stringNotEmptyValidator.validate,
+        isValid: false,
+      },
+      {
+        description: 'loginRequirements.email.isCorrect',
+        validator: this.emailCorrectValidator.validateEmail,
+        isValid: false,
+      },
+    ];
+
+    this.passwordRequirements = [
+      {
+        description: 'loginRequirements.password.notEmpty',
+        validator: this.stringNotEmptyValidator.validate,
+        isValid: false,
+      },
+    ];
+  }
+
+  /**
+   * Submits the login form and authenticates the user.
+   * On success, stores the token and navigates to the dashboard.
+   */
+  onSubmit() {
+    if (!this.isFormValid) {
+      return;
+    }
+
+    this.buttonActive = false;
+    const loginData: LoginModel = {
+      email: this.email,
+      password: this.password,
+      details: {
+        location: this.userLocation,
+        deviceName: this.deviceInfoService.getDeviceName(),
+      },
+    };
+
+    this.authService.login(loginData).subscribe({
+      next: (response) => {
+        this.userTokenService.revalidateAuthentication(response);
+        this.buttonActive = true;
+
+        this.router.navigate(['/dashboard']);
+      },
+      error: (error) => {
+        this.errorMessage = error.errorMessage || error.error.errorMessage;
+        this.showError = true;
+        this.email = '';
+        this.password = '';
+        this.buttonActive = true;
+      },
+    });
+  }
+}

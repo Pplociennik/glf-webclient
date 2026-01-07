@@ -6,6 +6,10 @@ import { provideHttpClient } from '@angular/common/http';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { provideTransloco } from '@ngneat/transloco';
 
+/**
+ * Application configuration with providers for routing, HTTP, and i18n.
+ * Configures Transloco with supported languages: en, pl, de, szl.
+ */
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
