@@ -133,6 +133,20 @@ $transition: all 0.3s ease;
       font-size: 0.95rem;
     }
 
+    .error-section {
+      text-align: center;
+      color: #52161c;
+      font-size: 1rem;
+      font-weight: 600;
+      background-color: #823039;
+      opacity: 0.8;
+      border-radius: 8px;
+      padding: 1rem;
+      border-color: #52161c;
+      border: 2px solid #52161c;
+      margin-bottom: 10px;
+    }
+
     // Form Inputs
     .inputs-section {
       position: relative;
@@ -181,7 +195,6 @@ $transition: all 0.3s ease;
         .eye-icon {
           @include eye-icon;
         }
-
       }
     }
 
@@ -228,6 +241,18 @@ $transition: all 0.3s ease;
 
       &:active {
         transform: translateY(0);
+      }
+
+      &:disabled {
+        background: #999;
+        cursor: not-allowed;
+        transform: none;
+
+        &:hover {
+          background: #999;
+          transform: none;
+          box-shadow: none;
+        }
       }
     }
 

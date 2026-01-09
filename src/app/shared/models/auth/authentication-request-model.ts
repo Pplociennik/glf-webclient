@@ -1,6 +1,10 @@
+export interface AuthDetails {
+  location: string;
+  deviceName: string;
+}
+
 export interface LoginModel {
-    username : string;
-    password : string;
-    location : string;
-    device : string;
+  username: string;
+  password: string;
+  details: AuthDetails;
 }
