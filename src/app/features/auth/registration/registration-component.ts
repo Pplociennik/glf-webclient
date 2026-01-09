@@ -9,14 +9,24 @@ import { PasswordInputValidator } from '../../../services/auth/validation/passwo
 import { FormsModule } from '@angular/forms';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { AuthService } from '../../../services/auth/auth-service';
-import { RegistrationModel } from '../../../shared/models/auth/registration-model';
+import {
+  CredentialsModel,
+  RegistrationModel,
+} from '../../../shared/models/auth/registration-model';
+import { ConfirmationLinkRequest } from '../../../shared/models/auth/confirmation-link-request';
 
 @Component({
   selector: 'app-registration-component',
   standalone: true,
-  imports: [CommonModule, InputRequirementTooltipComponent, FormsModule, TranslocoModule, RouterLink],
+  imports: [
+    CommonModule,
+    InputRequirementTooltipComponent,
+    FormsModule,
+    TranslocoModule,
+    RouterLink,
+  ],
   templateUrl: './registration-component.html',
-  styleUrls: ['./registration-component.scss']
+  styleUrls: ['./registration-component.scss'],
 })
 export class RegistrationComponent {
   @Input() username!: string;
@@ -55,7 +65,8 @@ export class RegistrationComponent {
   }
 
   private updateFormValidity() {
-    this.isFormValid = this.isUsernameValid &&
+    this.isFormValid =
+      this.isUsernameValid &&
       this.isEmailValid &&
       this.isPasswordValid &&
       this.isConfirmPasswordValid;
@@ -76,37 +87,77 @@ export class RegistrationComponent {
     private emailInputValidator: EmailInputValidator,
     private passwordInputValidator: PasswordInputValidator,
     private translocoService: TranslocoService,
-    private authService : AuthService
+    private authService: AuthService
   ) {
     this.initializeRequirements();
   }
 
   private initializeRequirements() {
     this.usernameRequirements = [
-      { description: 'registrationRequirements.username.minimumLength', validator: this.usernameInputValidator.validateUsernameMinimumLength, isValid: false },
-      { description: 'registrationRequirements.username.maximumLength', validator: this.usernameInputValidator.validateUsernameMaximumLength, isValid: true },
-      { description: 'registrationRequirements.username.characters', validator: this.usernameInputValidator.validateUsernameCharacters, isValid: false },
+      {
+        description: 'registrationRequirements.username.minimumLength',
+        validator: this.usernameInputValidator.validateUsernameMinimumLength,
+        isValid: false,
+      },
+      {
+        description: 'registrationRequirements.username.maximumLength',
+        validator: this.usernameInputValidator.validateUsernameMaximumLength,
+        isValid: true,
+      },
+      {
+        description: 'registrationRequirements.username.characters',
+        validator: this.usernameInputValidator.validateUsernameCharacters,
+        isValid: false,
+      },
     ];
 
     this.emailRequirements = [
-      { description: 'registrationRequirements.email.validEmail', validator: this.emailInputValidator.validateEmail, isValid: false },
+      {
+        description: 'registrationRequirements.email.validEmail',
+        validator: this.emailInputValidator.validateEmail,
+        isValid: false,
+      },
     ];
 
     this.passwordRequirements = [
-      { description: 'registrationRequirements.password.minimumLength', validator: this.passwordInputValidator.validatePasswordMinimumLength, isValid: false },
-      { description: 'registrationRequirements.password.maximumLength', validator: this.passwordInputValidator.validatePasswordMaximumLength, isValid: true },
-      { description: 'registrationRequirements.password.uppercaseLetter', validator: this.passwordInputValidator.validateAtLeastOneUppercaseLetter, isValid: false },
-      { description: 'registrationRequirements.password.lowercaseLetter', validator: this.passwordInputValidator.validateAtLeastOneLowercaseLetter, isValid: false },
-      { description: 'registrationRequirements.password.number', validator: this.passwordInputValidator.validateAtLeastOneNumber, isValid: false },
-      { description: 'registrationRequirements.password.specialCharacter', validator: this.passwordInputValidator.validateAtLeastOneSpecialCharacter, isValid: false }
+      {
+        description: 'registrationRequirements.password.minimumLength',
+        validator: this.passwordInputValidator.validatePasswordMinimumLength,
+        isValid: false,
+      },
+      {
+        description: 'registrationRequirements.password.maximumLength',
+        validator: this.passwordInputValidator.validatePasswordMaximumLength,
+        isValid: true,
+      },
+      {
+        description: 'registrationRequirements.password.uppercaseLetter',
+        validator: this.passwordInputValidator.validateAtLeastOneUppercaseLetter,
+        isValid: false,
+      },
+      {
+        description: 'registrationRequirements.password.lowercaseLetter',
+        validator: this.passwordInputValidator.validateAtLeastOneLowercaseLetter,
+        isValid: false,
+      },
+      {
+        description: 'registrationRequirements.password.number',
+        validator: this.passwordInputValidator.validateAtLeastOneNumber,
+        isValid: false,
+      },
+      {
+        description: 'registrationRequirements.password.specialCharacter',
+        validator: this.passwordInputValidator.validateAtLeastOneSpecialCharacter,
+        isValid: false,
+      },
     ];
 
     this.confirmPasswordRequirements = [
       {
         description: 'registrationRequirements.confirmPassword.match',
         validator: (confirmPassword: string) => this.password === confirmPassword,
-        isValid: this.password === this.confirmPassword
-      }
+        isValid: this.password === this.confirmPassword,
+      },
     ];
   }
 
@@ -119,17 +170,21 @@ export class RegistrationComponent {
   }
 
   onSubmit() {
-    if (!this.isFormValid)
-    {
+    if (!this.isFormValid) {
       return;
     }
 
-    const registrationData : RegistrationModel = {
+    const registrationData: RegistrationModel = {
       email: this.email,
       username: this.username,
-      password: this.password,
-      repeatPassword: this.confirmPassword
-    }
+      enabled: true,
+      credentials: [
+        {
+          temporary: false,
+          value: this.password,
+        },
+      ],
+    };
 
     this.authService.register(registrationData).subscribe({
       next: (response) => {
@@ -137,8 +192,7 @@ export class RegistrationComponent {
       },
       error: (error) => {
         console.error('blad');
-      }
-    })
+      },
+    });
   }
-
 }

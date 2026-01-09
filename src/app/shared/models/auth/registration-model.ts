@@ -1,6 +1,11 @@
+export interface CredentialsModel {
+    value: string;
+    temporary: boolean;
+}
+
 export interface RegistrationModel {
     email : String;
     username : String;
-    password : String;
-    repeatPassword : String;
+    enabled : boolean;
+    credentials : CredentialsModel[]
 }

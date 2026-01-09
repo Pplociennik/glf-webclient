@@ -4,7 +4,11 @@
       "Bash(cat:*)",
       "Bash(git checkout:*)",
       "Bash(ng serve:*)",
-      "Bash(npm install)"
+      "Bash(npm install)",
+      "Bash(npm run watch:*)",
+      "Bash(curl:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)"
     ]
   }
 }

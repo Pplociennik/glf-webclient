@@ -8,6 +8,7 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:8072', // Development API Gateway URL
+  keycloakUrl: 'http://localhost:7080',
 
   /**
    * Endpoint paths from REST controller methods.
@@ -15,6 +16,8 @@ export const environment = {
    * Values are the exact paths from controller annotations.
    */
   endpoints: {
+    keycloakClientAuth: '/realms/goaleaf/protocol/openid-connect/token',
+
     // AuthenticationController (/glf-accounts/api/auth)
     login: '/login',
     register: '/register',
