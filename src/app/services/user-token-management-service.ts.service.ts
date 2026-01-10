@@ -10,8 +10,9 @@ import { TokenInfo } from '../shared/models/response/Response';
 export class UserTokenManagementService {
   // localStorage keys
   private readonly ACCESS_TOKEN_KEY = 'user_access_token';
+  private readonly TOKEN_EXPIRY_KEY = 'user_acces_token_expiry';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor() {}
 
   /**
    * Stores token data in localStorage.
@@ -19,7 +20,10 @@ export class UserTokenManagementService {
    */
   revalidateToken(tokenInfo: TokenInfo): void {
     if (tokenInfo.refreshed) {
+      const expiryTimestamp = Date.now() + tokenInfo.expiresIn * 1000;
+
       localStorage.setItem(this.ACCESS_TOKEN_KEY, tokenInfo.accessToken);
+      localStorage.setItem(this.TOKEN_EXPIRY_KEY, expiryTimestamp.toString());
     }
   }
 
@@ -28,6 +32,19 @@ export class UserTokenManagementService {
    */
   getStoredAccessToken(): string | null {
     return localStorage.getItem(this.ACCESS_TOKEN_KEY);
+  }
+
+  isStillValid(): boolean {
+    const expiryStr = localStorage.getItem(this.TOKEN_EXPIRY_KEY);
+    if (!expiryStr) {
+      return false;
+    }
+
+    const expiry = parseInt(expiryStr, 10);
+    const now = Date.now();
+
+    // Add 30 second buffer to refresh before actual expiry
+    return now < expiry - 30000;
   }
 
   /**

@@ -53,7 +53,7 @@ export class LoginComponent {
         this.userTokenService.revalidateToken(response.tokenInfo);
         this.buttonActive = true;
 
-        this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
       },
       error: (error) => {
         this.showError = true;

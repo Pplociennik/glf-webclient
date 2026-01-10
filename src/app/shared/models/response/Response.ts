@@ -6,6 +6,7 @@ export interface StatusInfo {
 export interface TokenInfo {
   refreshed: boolean;
   accessToken: string;
+  expiresIn: number;
 }
 
 export interface Response<T> {
