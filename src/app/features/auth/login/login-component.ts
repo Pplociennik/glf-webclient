@@ -27,7 +27,9 @@ export class LoginComponent {
     private translocoService: TranslocoService,
     private authService: AuthService,
     private userTokenService: UserTokenManagementService
-  ) {}
+  ) {
+    this.userTokenService.getStoredAccessToken;
+  }
 
   goToRegister() {
     this.router.navigate(['/register']);

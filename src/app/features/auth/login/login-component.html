@@ -1,5 +1,5 @@
 <div class="login-container">
-  <form class="login-form">
+  <form class="login-form" (ngSubmit)="onSubmit()">
     <img src="/logo.jpg" alt="logo" class="right-setion-logo-img" />
 
     <div class="welcome-text">{{ 'loginComponent.welcomeText' | transloco }}</div>
@@ -59,7 +59,7 @@
         <a routerLink="/password-reset">{{ 'loginComponent.forgotPassword' | transloco }}</a>
       </div>
 
-      <button class="login-button" type="button" (click)="onSubmit()" [disabled]="!buttonActive">
+      <button class="login-button" type="submit" [disabled]="!buttonActive">
         {{ 'loginComponent.loginButton' | transloco }}
       </button>
     </div>

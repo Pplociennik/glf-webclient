@@ -3,6 +3,7 @@
   backdrop-filter: blur(10px);
   padding: 0.5rem 0;
   position: relative;
+  display: block;
   top: 0;
 
   .top-nav-content {
@@ -33,13 +34,12 @@
       }
     }
 
-    .language-switcher {
+    .nav-right {
       display: flex;
       align-items: center;
+      gap: 16px;
       position: absolute;
       right: 40px;
     }
-
   }
-
 }

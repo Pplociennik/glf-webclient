@@ -30,8 +30,9 @@ export class UserTokenManagementService {
   /**
    * Retrieves the stored access token from localStorage.
    */
-  getStoredAccessToken(): string | null {
-    return localStorage.getItem(this.ACCESS_TOKEN_KEY);
+  getStoredAccessToken(): string {
+    const accessToken = localStorage.getItem(this.ACCESS_TOKEN_KEY);
+    return accessToken != null ? accessToken : '';
   }
 
   isStillValid(): boolean {
@@ -53,5 +54,6 @@ export class UserTokenManagementService {
    */
   clearToken(): void {
     localStorage.removeItem(this.ACCESS_TOKEN_KEY);
+    localStorage.removeItem(this.TOKEN_EXPIRY_KEY);
   }
 }
