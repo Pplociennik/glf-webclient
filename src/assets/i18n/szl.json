@@ -1,65 +1,82 @@
 {
-    "homePage": {
-        "feature1": "Dojdziesz do swoich celi",
-        "feature2": "Połōnczoj sie z ludźmi",
-        "feature3": "Razym dokonocie wiyncyj",
-        "loginButton": "Wloguj sie",
-        "registerTxt": "Niy mosz jeszcze kōnta?",
-        "registerButton": "Zacznij za darmo"
+  "homePage": {
+    "feature1": "Dojdziesz do swoich celi",
+    "feature2": "Połōnczoj sie z ludźmi",
+    "feature3": "Razym dokonocie wiyncyj",
+    "loginButton": "Wloguj sie",
+    "registerTxt": "Niy mosz jeszcze kōnta?",
+    "registerButton": "Zacznij za darmo"
+  },
+  "accountsMenu": {
+    "profile": "Profil",
+    "accountManagement": "Zarzōndzanie Kōntym",
+    "language": "Godka",
+    "logOut": "Wyloguj sie"
+  },
+  "loginComponent": {
+    "welcomeText": "Witej znowu",
+    "welcomeSubText": "Proszã sie wlogować",
+    "emailInputText": "Email",
+    "passwordInputText": "Hasło",
+    "forgotPassword": "Zaboczoł żeś hasło?",
+    "loginButton": "Wloguj sie",
+    "registerLink": "Niy mosz jeszcze kōnta?",
+    "registerLink2": "Zacznij za darmo",
+    "loginButtonTooltip": "Nojprzōd wypołnij wszyjske pola"
+  },
+  "registrationComponent": {
+    "welcomeText": "Witej",
+    "welcomeSubText": "Proszã, wypołnij formularz niżyj i zacznij za darmo.",
+    "usernameInputText": "Miano używocza",
+    "usernameInputPlaceholder": "Wkludź swoje miano używocza",
+    "emailInputText": "Email",
+    "emailInputPlaceholder": "Wkludź swoj adres email",
+    "passwordInputText": "Hasło",
+    "passwordInputPlaceholder": "Wkludź swoje hasło",
+    "confirmPasswordInputText": "Potwiyrdź hasło",
+    "confirmPasswordInputPlaceholder": "Potwiyrdź swoje hasło",
+    "registerButton": "Zaregistruj sie",
+    "registerButtonTooltip": "Proszã, wypołnij formularz niżyj i zacznij za darmo.",
+    "loginLink": "Mosz już kōnto?",
+    "loginLink2": "Wloguj sie",
+    "successMessage": "Kōnto zostało stworzōne. Na Twojã skrzynkã emailowõ posłalimy wiadōmość z linkym weryfikacyjnym. Potwiyrdź swoj adres email, coby móc używać serwisu."
+  },
+  "registrationRequirements": {
+    "username": {
+      "minimumLength": "Minimalnie 3 znaki",
+      "maximumLength": "Maxymalnie 20 znakōw",
+      "characters": "Ino litery, cyfry i podkreślenia"
     },
-    "loginComponent": {
-        "welcomeText": "Witej znowu",
-        "welcomeSubText": "Proszã sie wlogować",
-        "emailInputText": "Email",
-        "passwordInputText": "Hasło",
-        "forgotPassword": "Zaboczoł żeś hasło?",
-        "loginButton": "Wloguj sie",
-        "registerLink": "Niy mosz jeszcze kōnta?",
-        "registerLink2": "Zacznij za darmo"
+    "email": {
+      "validEmail": "Wkludź poprowny adres email"
     },
-    "registrationComponent": {
-        "welcomeText": "Witej",
-        "welcomeSubText": "Proszã, wypołnij formularz niżyj i zacznij za darmo.",
-        "usernameInputText": "Miano używocza",
-        "usernameInputPlaceholder": "Wkludź swoje miano używocza",
-        "emailInputText": "Email",
-        "emailInputPlaceholder": "Wkludź swoj adres email",
-        "passwordInputText": "Hasło",
-        "passwordInputPlaceholder": "Wkludź swoje hasło",
-        "confirmPasswordInputText": "Potwiyrdź hasło",
-        "confirmPasswordInputPlaceholder": "Potwiyrdź swoje hasło",
-        "registerButton": "Zaregistruj sie",
-        "registerButtonTooltip": "Proszã, wypołnij formularz niżyj i zacznij za darmo.",
-        "loginLink": "Mosz już kōnto?",
-        "loginLink2": "Wloguj sie"
+    "password": {
+      "minimumLength": "Minimalnie 8 znakōw",
+      "maximumLength": "Maxymalnie 256 znakōw",
+      "uppercaseLetter": "Minimalnie jedna wielgŏ litera",
+      "lowercaseLetter": "Minimalnie jedna małŏ litera",
+      "number": "Minimalnie jedna cyfra",
+      "specialCharacter": "Minimalnie jeden znocek specjalny"
     },
-    "registrationRequirements": {
-        "username": {
-            "minimumLength": "Minimalnie 3 znaki",
-            "maximumLength": "Maxymalnie 20 znakōw",
-            "characters": "Ino litery, cyfry i podkreślenia"
-        },
-        "email": {
-            "validEmail": "Wkludź poprowny adres email"
-        },
-        "password": {
-            "minimumLength": "Minimalnie 8 znakōw",
-            "maximumLength": "Maxymalnie 256 znakōw",
-            "uppercaseLetter": "Minimalnie jedna wielgŏ litera",
-            "lowercaseLetter": "Minimalnie jedna małŏ litera",
-            "number": "Minimalnie jedna cyfra",
-            "specialCharacter": "Minimalnie jeden znocek specjalny"
-        },
-        "confirmPassword": {
-            "match": "Hasła muszōm być take same"
-        }
-    },
-    "passwordResetComponent": {
-        "title": "Zresetuj swoje hasło",
-        "subTitle": "Wkludź swoj adres email, a my podeślemy Ci link do resetowania hasła.",
-        "emailInputPlaceholder": "Wkludź swoj adres email",
-        "sendResetLink": "Poślij link",
-        "sendResetLinkTooltip": "Proszã wkludzić swoj adres email",
-        "passwordResetSuccessText": "Jak adres email, co żeś wkludził, je w naszej bazie, to podeślemy Ci link do resetowania hasła. Jak niy znŏdziesz maila we swojej skrzynce, to zajrzij tyż do folderu spam."
+    "confirmPassword": {
+      "match": "Hasła muszōm być take same"
     }
+  },
+  "loginRequirements": {
+    "email": {
+      "notEmpty": "Dej adres e-mail",
+      "isCorrect": "Adres musi być porzōndny"
+    },
+    "password": {
+      "notEmpty": "Dej hasło"
+    }
+  },
+  "passwordResetComponent": {
+    "title": "Zresetuj swoje hasło",
+    "subTitle": "Wkludź swoj adres email, a my podeślemy Ci link do resetowania hasła.",
+    "emailInputPlaceholder": "Wkludź swoj adres email",
+    "sendResetLink": "Poślij link",
+    "sendResetLinkTooltip": "Proszã wkludzić swoj adres email",
+    "passwordResetSuccessText": "Jak adres email, co żeś wkludził, je w naszej bazie, to podeślemy Ci link do resetowania hasła. Jak niy znŏdziesz maila we swojej skrzynce, to zajrzij tyż do folderu spam."
+  }
 }

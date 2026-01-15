@@ -1,0 +1,38 @@
+<div class="main_container">
+  <button mat-button [matMenuTriggerFor]="accountsMenu">
+    <div class="main_btn">
+      <span class="username">{{ getUsername }}</span>
+      <!-- <mat-icon>account_circle</mat-icon> -->
+      <img
+        src="https://www.vhv.rs/dpng/d/256-2569650_men-profile-icon-png-image-free-download-searchpng.png"
+      />
+      <i class="material-icons">arrow_drop_down</i>
+    </div>
+
+    <mat-menu #accountsMenu="matMenu" class="accounts-menu">
+      <button mat-menu-item disabled>
+        <mat-icon>account_box</mat-icon>
+        <span>{{ 'accountsMenu.profile' | transloco }}</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>settings</mat-icon>
+        <span>{{ 'accountsMenu.accountManagement' | transloco }}</span>
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="languages">
+        <mat-icon>language</mat-icon>
+        <span>{{ 'accountsMenu.language' | transloco }}</span>
+      </button>
+      <button mat-menu-item class="logout-menu-item" (click)="logoutUser()">
+        <mat-icon>power_settings_new</mat-icon>
+        <span>{{ 'accountsMenu.logOut' | transloco }}</span>
+      </button>
+    </mat-menu>
+
+    <mat-menu #languages class="accounts-menu">
+      <button mat-menu-item (click)="changeLanguage('en')">English</button>
+      <button mat-menu-item (click)="changeLanguage('pl')">Polski</button>
+      <button mat-menu-item (click)="changeLanguage('de')">Deutsch</button>
+      <button mat-menu-item (click)="changeLanguage('szl')">Ślōnsko godka</button>
+    </mat-menu>
+  </button>
+</div>

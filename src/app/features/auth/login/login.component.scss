@@ -1,0 +1,329 @@
+// Variables
+$color-primary: #2d5016;
+$color-primary-dark: #1f3a0f;
+$color-text: #2d5016;
+$color-text-light: #666;
+$color-border: #ccc;
+$color-placeholder: #aaa;
+$color-error: #dc3545;
+$color-white: #fff;
+$shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-focus: 0 0 0 2px rgba(45, 80, 22, 0.15);
+$transition: all 0.3s ease;
+
+// Mixins
+@mixin input-icon {
+  position: absolute;
+  display: inline-flex;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0.8;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@mixin eye-icon {
+  position: absolute;
+  display: inline-flex;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  opacity: 0.8;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+@mixin input-field {
+  width: 100%;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  box-sizing: border-box;
+  height: 2.5rem;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: $transition;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: $shadow-focus;
+  }
+
+  &::placeholder {
+    color: $color-placeholder;
+  }
+}
+
+@mixin input-field-password {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  box-sizing: border-box;
+  height: 2.5rem;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: $transition;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: $shadow-focus;
+  }
+
+  &::placeholder {
+    color: $color-placeholder;
+  }
+}
+
+// Base Styles
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient(135deg, #f8f6f0 0%, #e8f5e9 100%);
+
+  .login-form {
+    background: $color-white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: $shadow-sm;
+    max-width: 480px;
+    max-height: 90%;
+    height: auto;
+    margin: 0 auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    .right-setion-logo-img {
+      position: relative;
+      max-width: 80px;
+      max-height: 80px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    // Welcome Section
+    .welcome-text {
+      position: relative;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: $color-text;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .welcome-sub-text {
+      position: relative;
+      color: $color-text-light;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .error-section {
+      text-align: center;
+      color: #52161c;
+      font-size: 1rem;
+      font-weight: 600;
+      background-color: #823039;
+      opacity: 0.8;
+      border-radius: 8px;
+      padding: 1rem;
+      border-color: #52161c;
+      border: 2px solid #52161c;
+      margin-bottom: 10px;
+    }
+
+    // Form Inputs
+    .inputs-section {
+      position: relative;
+    }
+
+    // Section wrappers for tooltip positioning
+    .email-section,
+    .password-section {
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    // Input Sections
+    .email-input-container,
+    .password-input-container {
+      display: block;
+      position: relative;
+
+      label {
+        display: block;
+        color: $color-text;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+
+      .email-input-wrapper {
+        position: relative;
+        display: block;
+
+        img {
+          @include input-icon;
+        }
+
+        input {
+          @include input-field;
+        }
+      }
+
+      .password-input-wrapper {
+        position: relative;
+        display: block;
+
+        .password-input-icon {
+          @include input-icon;
+        }
+
+        .password-input {
+          @include input-field-password;
+        }
+
+        .eye-icon {
+          @include eye-icon;
+        }
+      }
+    }
+
+    // Forgot Password Link
+    .forgot-password {
+      position: relative;
+      text-align: right;
+      margin: -0.75rem 0 1rem;
+
+      a {
+        color: $color-primary;
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+
+        &:hover {
+          text-decoration: underline;
+          color: $color-primary-dark;
+        }
+      }
+    }
+
+    // Button Section
+    .login-button {
+      width: 100%;
+      position: relative;
+      transition: all 0.3s ease;
+
+      &:disabled {
+        background-color: #cccccc;
+        border-color: #bbbbbb;
+        color: #666666;
+        cursor: not-allowed;
+        opacity: 0.8;
+      }
+
+      .tooltip {
+        position: absolute;
+        background-color: #333;
+        top: 120%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        margin-bottom: 8px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: transparent transparent #333 transparent;
+        }
+      }
+
+      &:disabled:hover .tooltip,
+      &:disabled:focus .tooltip {
+        opacity: 1;
+        visibility: visible;
+      }
+      padding: 14px;
+      background: $color-primary;
+      color: $color-white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: $transition;
+
+      &:hover {
+        background: $color-primary-dark;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(45, 80, 22, 0.2);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    // Register Link
+    .register-link {
+      position: relative;
+      text-align: center;
+      margin-top: 1.5rem;
+      color: $color-text-light;
+      font-size: 0.9rem;
+      line-height: 1.5;
+
+      a {
+        color: $color-primary;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+          text-decoration: underline;
+          color: $color-primary-dark;
+        }
+      }
+    }
+
+    // Responsive Adjustments
+    @media (max-width: 480px) {
+      .login-form {
+        padding: 2rem 1.5rem;
+      }
+
+      .welcome-text {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

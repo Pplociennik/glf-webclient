@@ -1,65 +1,82 @@
 {
-    "homePage": {
-        "feature1": "Set and track personal goals",
-        "feature2": "Connect with people",
-        "feature3": "Achieve more together",
-        "loginButton": "Sign in",
-        "registerTxt": "Don't have an account yet?",
-        "registerButton": "Get Started for Free"
+  "homePage": {
+    "feature1": "Set and track personal goals",
+    "feature2": "Connect with people",
+    "feature3": "Achieve more together",
+    "loginButton": "Sign in",
+    "registerTxt": "Don't have an account yet?",
+    "registerButton": "Get Started for Free"
+  },
+  "accountsMenu": {
+    "profile": "Profile",
+    "accountManagement": "Account Management",
+    "language": "Language",
+    "logOut": "Log out"
+  },
+  "loginComponent": {
+    "welcomeText": "Welcome Back",
+    "welcomeSubText": "Please, sign in to your account",
+    "emailInputText": "Email",
+    "passwordInputText": "Password",
+    "forgotPassword": "Forgot Password?",
+    "loginButton": "Sign in",
+    "registerLink": "Don't have an account yet?",
+    "registerLink2": "Get Started for Free",
+    "loginButtonTooltip": "Please fill in all fields first"
+  },
+  "registrationComponent": {
+    "welcomeText": "Welcome",
+    "welcomeSubText": "Please, fill up the form below and we'll get you started.",
+    "usernameInputText": "Username",
+    "usernameInputPlaceholder": "Enter your username",
+    "emailInputText": "Email",
+    "emailInputPlaceholder": "Enter your email",
+    "passwordInputText": "Password",
+    "passwordInputPlaceholder": "Enter your password",
+    "confirmPasswordInputText": "Confirm Password",
+    "confirmPasswordInputPlaceholder": "Confirm your password",
+    "registerButton": "Register",
+    "registerButtonTooltip": "Please, fill up the form below and we'll get you started.",
+    "loginLink": "Already have an account?",
+    "loginLink2": "Login",
+    "successMessage": "Your account has been created. A verification email has been sent to your inbox. Please confirm your email address to use the service."
+  },
+  "registrationRequirements": {
+    "username": {
+      "minimumLength": "At least 3 characters",
+      "maximumLength": "At most 20 characters",
+      "characters": "Only letters, numbers, and underscores"
     },
-    "loginComponent": {
-        "welcomeText": "Welcome Back",
-        "welcomeSubText": "Please, sign in to your account",
-        "emailInputText": "Email",
-        "passwordInputText": "Password",
-        "forgotPassword": "Forgot Password?",
-        "loginButton": "Sign in",
-        "registerLink": "Don't have an account yet?",
-        "registerLink2": "Get Started for Free"
+    "email": {
+      "validEmail": "Valid email address"
     },
-    "registrationComponent": {
-        "welcomeText": "Welcome",
-        "welcomeSubText": "Please, fill up the form below and we'll get you started.",
-        "usernameInputText": "Username",
-        "usernameInputPlaceholder": "Enter your username",
-        "emailInputText": "Email",
-        "emailInputPlaceholder": "Enter your email",
-        "passwordInputText": "Password",
-        "passwordInputPlaceholder": "Enter your password",
-        "confirmPasswordInputText": "Confirm Password",
-        "confirmPasswordInputPlaceholder": "Confirm your password",
-        "registerButton": "Register",
-        "registerButtonTooltip": "Please, fill up the form below and we'll get you started.",
-        "loginLink": "Already have an account?",
-        "loginLink2": "Login"
+    "password": {
+      "minimumLength": "At least 8 characters",
+      "maximumLength": "At most 256 characters",
+      "uppercaseLetter": "At least one uppercase letter",
+      "lowercaseLetter": "At least one lowercase letter",
+      "number": "At least one number",
+      "specialCharacter": "At least one special character"
     },
-    "registrationRequirements": {
-        "username": {
-            "minimumLength": "At least 3 characters",
-            "maximumLength": "At most 20 characters",
-            "characters": "Only letters, numbers, and underscores"
-        },
-        "email": {
-            "validEmail": "Valid email address"
-        },
-        "password": {
-            "minimumLength": "At least 8 characters",
-            "maximumLength": "At most 256 characters",
-            "uppercaseLetter": "At least one uppercase letter",
-            "lowercaseLetter": "At least one lowercase letter",
-            "number": "At least one number",
-            "specialCharacter": "At least one special character"
-        },
-        "confirmPassword": {
-            "match": "Passwords must match"
-        },
-        "passwordResetComponent": {
-            "title": "Reset your password",
-            "subTitle": "Enter your email address and we'll send you a link to reset your password.",
-            "emailInputPlaceholder": "Enter your email",
-            "sendResetLink": "Send Reset Link",
-            "sendResetLinkTooltip": "Please enter your email address",
-            "passwordResetSuccessText": "If the email address you entered exists in our system, we will send you a password reset link. If you don’t find the email in your inbox, please check your spam or junk folder."
-        }
+    "confirmPassword": {
+      "match": "Passwords must match"
     }
+  },
+  "loginRequirements": {
+    "email": {
+      "notEmpty": "Please enter your email address",
+      "isCorrect": "The address must be correct"
+    },
+    "password": {
+      "notEmpty": "Please enter your password"
+    }
+  },
+  "passwordResetComponent": {
+    "title": "Reset your password",
+    "subTitle": "Enter your email address and we'll send you a link to reset your password.",
+    "emailInputPlaceholder": "Enter your email",
+    "sendResetLink": "Send Reset Link",
+    "sendResetLinkTooltip": "Please enter your email address",
+    "passwordResetSuccessText": "If the email address you entered exists in our system, we will send you a password reset link. If you don’t find the email in your inbox, please check your spam or junk folder."
+  }
 }

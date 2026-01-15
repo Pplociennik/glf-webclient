@@ -1,0 +1,164 @@
+<div class="registration-container">
+  <form class="registration-form" (ngSubmit)="onSubmit()">
+    <img src="/logo.jpg" alt="logo" class="main-logo-img" />
+
+    <div class="welcome-text">{{ 'registrationComponent.welcomeText' | transloco }}</div>
+    <div class="welcome-sub-text">{{ 'registrationComponent.welcomeSubText' | transloco }}</div>
+
+    @if (showError) {
+    <app-error-info [labelText]="errorMessage" />
+    }
+
+    <div class="inputs-section">
+      <div class="username-section">
+        <div class="username-input-container">
+          <label class="username-input-text">{{
+            'registrationComponent.usernameInputText' | transloco
+          }}</label>
+          <div class="username-input-wrapper">
+            <img src="/icons/registration-component/username.png" alt="" />
+            <input
+              class="username-input"
+              type="text"
+              name="username"
+              placeholder="{{ 'registrationComponent.usernameInputPlaceholder' | transloco }}"
+              (focus)="showUsernameTooltip = true"
+              (blur)="showUsernameTooltip = false"
+              [(ngModel)]="username"
+            />
+          </div>
+        </div>
+
+        <app-input-requirement-tooltip-component
+          [showTooltip]="showUsernameTooltip"
+          [requirements]="usernameRequirements"
+          [value]="username"
+          (validityChange)="onUsernameValidityChange($event)"
+        >
+        </app-input-requirement-tooltip-component>
+      </div>
+
+      <div class="email-section">
+        <div class="email-input-container">
+          <label class="email-input-text">{{
+            'registrationComponent.emailInputText' | transloco
+          }}</label>
+          <div class="email-input-wrapper">
+            <img src="/icons/registration-component/email.png" alt="email-icon" />
+            <input
+              class="email-input"
+              type="email"
+              name="email"
+              placeholder="{{ 'registrationComponent.emailInputPlaceholder' | transloco }}"
+              (focus)="showEmailTooltip = true"
+              (blur)="showEmailTooltip = false"
+              [(ngModel)]="email"
+            />
+          </div>
+        </div>
+
+        <app-input-requirement-tooltip-component
+          [showTooltip]="showEmailTooltip"
+          [requirements]="emailRequirements"
+          [value]="email"
+          (validityChange)="onEmailValidityChange($event)"
+        >
+        </app-input-requirement-tooltip-component>
+      </div>
+
+      <div class="password-section">
+        <div class="password-input-container">
+          <label class="password-input-text">{{
+            'registrationComponent.passwordInputText' | transloco
+          }}</label>
+          <div class="password-input-wrapper">
+            <input
+              class="password-input"
+              [type]="showPassword ? 'text' : 'password'"
+              name="password"
+              placeholder="{{ 'registrationComponent.passwordInputPlaceholder' | transloco }}"
+              (focus)="showPasswordTooltip = true"
+              (blur)="showPasswordTooltip = false"
+              [(ngModel)]="password"
+            />
+            <img
+              class="password-icon"
+              src="/icons/registration-component/key.png"
+              alt="password-icon"
+            />
+            <img
+              class="eye-icon"
+              src="/icons/registration-component/{{ showPassword ? 'hide' : 'view' }}.png"
+              alt="{{ showPassword ? 'hide-icon' : 'view-icon' }}"
+              (click)="togglePasswordVisibility()"
+            />
+          </div>
+        </div>
+
+        <app-input-requirement-tooltip-component
+          [showTooltip]="showPasswordTooltip"
+          [requirements]="passwordRequirements"
+          [value]="password"
+          (validityChange)="onPasswordValidityChange($event)"
+        >
+        </app-input-requirement-tooltip-component>
+      </div>
+
+      <div class="confirm-password-section">
+        <div class="confirm-password-input-container">
+          <label class="confirm-password-input-text">{{
+            'registrationComponent.confirmPasswordInputText' | transloco
+          }}</label>
+          <div class="confirm-password-input-wrapper">
+            <input
+              class="password-input"
+              [type]="showConfirmPassword ? 'text' : 'password'"
+              name="confirmPassword"
+              placeholder="{{
+                'registrationComponent.confirmPasswordInputPlaceholder' | transloco
+              }}"
+              (focus)="showConfirmPasswordTooltip = true"
+              (blur)="showConfirmPasswordTooltip = false"
+              [(ngModel)]="confirmPassword"
+            />
+            <img
+              class="password-icon"
+              src="/icons/registration-component/key.png"
+              alt="password-icon"
+            />
+            <img
+              class="eye-icon"
+              src="/icons/registration-component/{{ showConfirmPassword ? 'hide' : 'view' }}.png"
+              alt="{{ showConfirmPassword ? 'hide-icon' : 'view-icon' }}"
+              (click)="toggleConfirmPasswordVisibility()"
+            />
+          </div>
+        </div>
+
+        <app-input-requirement-tooltip-component
+          [showTooltip]="showConfirmPasswordTooltip"
+          [requirements]="confirmPasswordRequirements"
+          [value]="confirmPassword"
+          (validityChange)="onConfirmPasswordValidityChange($event)"
+        >
+        </app-input-requirement-tooltip-component>
+      </div>
+
+      <div class="register-button-section">
+        <button class="register-button" type="submit" [disabled]="!isFormValid">
+          {{ 'registrationComponent.registerButton' | transloco }}
+          @if (!isFormValid) {
+          <span class="tooltip">{{
+            'registrationComponent.registerButtonTooltip' | transloco
+          }}</span>
+          }
+        </button>
+      </div>
+
+      <div class="login-link-section">
+        {{ 'registrationComponent.loginLink' | transloco }}
+        <a routerLink="/login">{{ 'registrationComponent.loginLink2' | transloco }}</a>
+      </div>
+    </div>
+  </form>
+</div>

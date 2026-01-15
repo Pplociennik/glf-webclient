@@ -1,0 +1,40 @@
+@use '@angular/material' as mat;
+
+/* Angular Material - Menu Overrides */
+::ng-deep .accounts-menu {
+  @include mat.menu-overrides(
+    (
+      container-shape: 0px,
+      item-hover-state-layer-color: rgb(184, 212, 184),
+      item-focus-state-layer-color: rgb(184, 212, 184),
+    )
+  );
+
+  .mat-mdc-menu-submenu-icon {
+    display: none;
+  }
+}
+
+.logout-menu-item {
+  border-top: 2px solid lightgray;
+  display: flex;
+  color: red;
+  font-weight: bold;
+}
+
+.main_btn {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 10px;
+  justify-content: space-between;
+
+  img {
+    width: 35px;
+    height: 35px;
+    border: 1.5px solid var(--goaleaf-primary);
+  }
+
+  span {
+    color: var(--goaleaf-primary);
+  }
+}

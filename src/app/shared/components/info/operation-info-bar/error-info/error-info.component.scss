@@ -1,0 +1,18 @@
+.main-container {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  width: 90%;
+  text-align: center;
+  color: #ae1121;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #cd9198;
+  opacity: 0.8;
+  border-radius: 8px;
+  padding: 1rem;
+  border-color: #52161c;
+  border: 2px solid #52161c;
+  margin-bottom: 20px;
+}
