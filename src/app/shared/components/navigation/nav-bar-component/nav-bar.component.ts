@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LanguageSwitcherComponent } from '../language-switcher-component/language-switcher.component';
 import { AccountMenuComponent } from '../account-menu/account-menu.component';
 import { UserTokenManagementService } from '../../../../services/user-token-management-service';
+import { Subscription } from 'rxjs';
 
 /**
  * Navigation bar component displayed at the top of the application.
@@ -15,15 +16,26 @@ import { UserTokenManagementService } from '../../../../services/user-token-mana
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss',
 })
-export class NavBarComponent {
-  constructor(private router: Router, private userTokenService: UserTokenManagementService) {
-    if (!this.userLoggedIn) {
-      this.router.navigate(['/']);
-    }
+export class NavBarComponent implements OnInit, OnDestroy {
+  userLoggedIn = false;
+  private authSubscription?: Subscription;
+
+  constructor(private router: Router, private userTokenService: UserTokenManagementService) {}
+
+  /**
+   * Initializes the component by subscribing to authentication state changes.
+   */
+  ngOnInit(): void {
+    this.authSubscription = this.userTokenService.isAuthenticated$.subscribe((isAuthenticated) => {
+      this.userLoggedIn = isAuthenticated;
+    });
   }
 
-  get userLoggedIn(): boolean {
-    return this.userTokenService.isStillValid();
+  /**
+   * Cleans up the authentication subscription to prevent memory leaks.
+   */
+  ngOnDestroy(): void {
+    this.authSubscription?.unsubscribe();
   }
 
   /**

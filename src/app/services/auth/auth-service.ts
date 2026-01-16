@@ -4,13 +4,11 @@ import { RegistrationModel } from '../../shared/models/auth/registration-model';
 import { Response, ResponseData } from '../../shared/models/response/Response';
 import { environment } from '../../../environments/environment';
 import { ApiPaths } from '../../enums/ApiPaths';
-import { EMPTY, from, Observable, switchMap } from 'rxjs';
+import { from, Observable, switchMap } from 'rxjs';
 import { LoginModel } from '../../shared/models/auth/authentication-request-model';
 import { ClientTokenManagementService } from './client-token-management.service';
 import { ConfirmationLinkRequest } from '../../shared/models/auth/confirmation-link-request';
 import { UserTokenManagementService } from '../user-token-management-service';
-import { Token } from '@angular/compiler';
-import { PasswordResetRequest } from '../../shared/models/auth/password-reset-request';
 import { LanguageService } from '../lang/language-service';
 
 /**
@@ -91,35 +89,6 @@ export class AuthService {
           Authorization: `Bearer ${token}`,
         });
         return this.httpClient.post<Response<void>>(url, linkRequestModel, { headers });
-      })
-    );
-  }
-
-  /**
-   * Refreshes the current user session if the stored token has expired.
-   * Returns EMPTY observable if no token exists or token is still valid.
-   * @param userAccessToken - Current user access token to refresh
-   * @returns Observable containing the session refresh response, or EMPTY if refresh not needed
-   */
-  refreshUserSession(userAccessToken: string): Observable<Response<ResponseData>> {
-    const url = `${this.baseUrl}${environment.endpoints.sessionRefresh}`;
-    const currentStoredUserToken = this.userTokenService.getStoredAccessToken();
-
-    return from(this.clientTokenService.ensureValidToken()).pipe(
-      switchMap((token) => {
-        const userTokenValid = this.userTokenService.isStillValid();
-
-        if (currentStoredUserToken != null && !userTokenValid) {
-          const headers = new HttpHeaders()
-            .set('Authorization', `Bearer ${token}`)
-            .set('User-Token', currentStoredUserToken);
-
-          return this.httpClient.post<Response<ResponseData>>(url, currentStoredUserToken, {
-            headers,
-          });
-        } else {
-          return EMPTY;
-        }
       })
     );
   }

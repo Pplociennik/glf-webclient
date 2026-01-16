@@ -7,14 +7,13 @@ import { UserTokenManagementService } from '../services/user-token-management-se
  * Redirects unauthenticated users to the login page.
  * Use this for protected pages like dashboard, profile, etc.
  */
-export const authGuard: CanActivateFn = () => {
+export const authGuard: CanActivateFn = async () => {
   const userTokenService = inject(UserTokenManagementService);
   const router = inject(Router);
 
-  const hasToken = userTokenService.getStoredAccessToken() !== '';
-  const isValid = userTokenService.isStillValid();
+  const isAuthenticated = await userTokenService.isStillValid();
 
-  if (hasToken && isValid) {
+  if (isAuthenticated) {
     return true;
   }
 

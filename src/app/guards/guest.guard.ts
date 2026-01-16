@@ -7,14 +7,13 @@ import { UserTokenManagementService } from '../services/user-token-management-se
  * Redirects authenticated users to the dashboard.
  * Use this to prevent logged-in users from accessing auth pages.
  */
-export const guestGuard: CanActivateFn = () => {
+export const guestGuard: CanActivateFn = async () => {
   const userTokenService = inject(UserTokenManagementService);
   const router = inject(Router);
 
-  const hasToken = userTokenService.getStoredAccessToken() !== '';
-  const isValid = userTokenService.isStillValid();
+  const isAuthenticated = await userTokenService.isStillValid();
 
-  if (hasToken && isValid) {
+  if (isAuthenticated) {
     return router.createUrlTree(['/dashboard']);
   }
 
