@@ -11,7 +11,9 @@
       "Bash(findstr:*)",
       "mcp__ide__getDiagnostics",
       "Bash(git mv:*)",
-      "Bash(powershell -Command:*)"
+      "Bash(powershell -Command:*)",
+      "Bash(timeout:*)",
+      "Bash(taskkill:*)"
     ]
   }
 }
