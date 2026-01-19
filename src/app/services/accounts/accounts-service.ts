@@ -1,16 +1,15 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ClientTokenManagementService } from '../auth/client-token-management.service';
-import { UserTokenManagementService } from '../user-token-management-service';
+import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ApiPaths } from '../../enums/ApiPaths';
 import { PasswordResetRequest } from '../../shared/models/auth/password-reset-request';
-import { from, Observable, switchMap } from 'rxjs';
 import { Response } from '../../shared/models/response/Response';
 
 /**
  * Service for account management operations.
  * Handles password reset and other account-related API requests.
+ * Authentication headers are automatically attached by HTTP interceptors.
  */
 @Injectable({
   providedIn: 'root',
@@ -18,11 +17,7 @@ import { Response } from '../../shared/models/response/Response';
 export class AccountsService {
   private baseUrl = `${environment.baseUrl}${ApiPaths.Accounts}`;
 
-  constructor(
-    private httpClient: HttpClient,
-    private clientTokenService: ClientTokenManagementService,
-    private userTokenService: UserTokenManagementService
-  ) {}
+  constructor(private httpClient: HttpClient) {}
 
   /**
    * Initiates a password reset request for the user.
@@ -31,13 +26,6 @@ export class AccountsService {
    */
   resetPassword(requestModel: PasswordResetRequest): Observable<Response<void>> {
     const url = `${this.baseUrl}${environment.endpoints.passwordReset}`;
-
-    return from(this.clientTokenService.ensureValidToken()).pipe(
-      switchMap((token) => {
-        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-        return this.httpClient.post<Response<void>>(url, requestModel, { headers });
-      })
-    );
+    return this.httpClient.post<Response<void>>(url, requestModel);
   }
 }
