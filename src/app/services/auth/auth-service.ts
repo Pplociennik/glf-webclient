@@ -1,20 +1,17 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { RegistrationModel } from '../../shared/models/auth/registration-model';
 import { Response, ResponseData } from '../../shared/models/response/Response';
 import { environment } from '../../../environments/environment';
 import { ApiPaths } from '../../enums/ApiPaths';
-import { from, Observable, switchMap } from 'rxjs';
 import { LoginModel } from '../../shared/models/auth/authentication-request-model';
-import { ClientTokenManagementService } from './client-token-management.service';
 import { ConfirmationLinkRequest } from '../../shared/models/auth/confirmation-link-request';
-import { UserTokenManagementService } from '../user-token-management-service';
-import { LanguageService } from '../lang/language-service';
 
 /**
  * Service responsible for user authentication operations.
  * Handles registration, login, session management, and password reset.
- * All requests are authenticated using client tokens managed by ClientTokenManagementService.
+ * Authentication headers are automatically attached by HTTP interceptors.
  */
 @Injectable({
   providedIn: 'root',
@@ -22,17 +19,7 @@ import { LanguageService } from '../lang/language-service';
 export class AuthService {
   private baseUrl = `${environment.baseUrl}${ApiPaths.Auth}`;
 
-  constructor(
-    private httpClient: HttpClient,
-    private clientTokenService: ClientTokenManagementService,
-    private userTokenService: UserTokenManagementService,
-    private languageService: LanguageService
-  ) {
-    // Eager initialization - fetch token immediately on service creation
-    this.clientTokenService.ensureValidToken().catch((error: unknown) => {
-      console.error('Failed to initialize client token:', error);
-    });
-  }
+  constructor(private httpClient: HttpClient) {}
 
   /**
    * Registers a new user account.
@@ -41,18 +28,7 @@ export class AuthService {
    */
   register(registrationModel: RegistrationModel): Observable<Response<void>> {
     const url = `${this.baseUrl}${environment.endpoints.register}`;
-    const language = this.languageService.getCurrentLanguage();
-    console.log(language);
-
-    // Convert Promise to Observable and chain the HTTP request
-    return from(this.clientTokenService.ensureValidToken()).pipe(
-      switchMap((token) => {
-        const headers = new HttpHeaders()
-          .set('Authorization', `Bearer ${token}`)
-          .set('Accept-Language', language);
-        return this.httpClient.post<Response<void>>(url, registrationModel, { headers });
-      })
-    );
+    return this.httpClient.post<Response<void>>(url, registrationModel);
   }
 
   /**
@@ -62,16 +38,7 @@ export class AuthService {
    */
   login(authRequestModel: LoginModel): Observable<Response<ResponseData>> {
     const url = `${this.baseUrl}${environment.endpoints.login}`;
-
-    // Convert Promise to Observable and chain the HTTP request
-    return from(this.clientTokenService.ensureValidToken()).pipe(
-      switchMap((token) => {
-        const headers = new HttpHeaders({
-          Authorization: `Bearer ${token}`,
-        });
-        return this.httpClient.post<Response<ResponseData>>(url, authRequestModel, { headers });
-      })
-    );
+    return this.httpClient.post<Response<ResponseData>>(url, authRequestModel);
   }
 
   /**
@@ -81,35 +48,15 @@ export class AuthService {
    */
   requestConfirmationLink(linkRequestModel: ConfirmationLinkRequest): Observable<Response<void>> {
     const url = `${this.baseUrl}${environment.endpoints.emailConfirmationRequest}`;
-
-    // Convert Promise to Observable and chain the HTTP request
-    return from(this.clientTokenService.ensureValidToken()).pipe(
-      switchMap((token) => {
-        const headers = new HttpHeaders({
-          Authorization: `Bearer ${token}`,
-        });
-        return this.httpClient.post<Response<void>>(url, linkRequestModel, { headers });
-      })
-    );
+    return this.httpClient.post<Response<void>>(url, linkRequestModel);
   }
 
   /**
    * Logs out the current user and terminates their session.
-   * @param userToken - User token identifying the session to terminate
    * @returns Observable containing the logout response
    */
-  logoutCurrentUserSession(userToken: string): Observable<Response<void>> {
+  logoutCurrentUserSession(): Observable<Response<void>> {
     const url = `${this.baseUrl}${environment.endpoints.logout}`;
-    const userAccessToken = this.userTokenService.getStoredAccessToken();
-
-    return from(this.clientTokenService.ensureValidToken()).pipe(
-      switchMap((token) => {
-        const headers = new HttpHeaders()
-          .set('Authorization', `Bearer ${token}`)
-          .set('User-Token', userAccessToken);
-
-        return this.httpClient.delete<Response<void>>(url, { headers });
-      })
-    );
+    return this.httpClient.delete<Response<void>>(url);
   }
 }

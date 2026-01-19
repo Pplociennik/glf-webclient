@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LanguageService } from '../../../../services/lang/language-service';
+import { LanguageService } from '../../../../services/system/lang/language-service';
 
 /**
  * Component that provides a dropdown for switching application language.

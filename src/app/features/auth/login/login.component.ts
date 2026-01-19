@@ -1,17 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NavBarComponent } from '../../../shared/components/navigation/nav-bar-component/nav-bar.component';
 import { Router, RouterLink } from '@angular/router';
-import { TranslocoLoader, TranslocoModule, TranslocoService } from '@ngneat/transloco';
+import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { AuthService } from '../../../services/auth/auth-service';
 import { LoginModel } from '../../../shared/models/auth/authentication-request-model';
 import { FormsModule } from '@angular/forms';
-import { UserTokenManagementService } from '../../../services/user-token-management-service';
 import { OperationInfoBarComponent } from '../../../shared/components/info/operation-info-bar/operation-info-bar.component';
 import { StringNotEmptyValidatorService } from '../../../services/auth/validation/common/string-not-empty-validator/string-not-empty-validator.service';
 import { InputRequirementModel } from '../../../shared/models/input-requirement-model';
 import { InputRequirementTooltipComponent } from '../../../shared/components/input-requirement-tooltip-component/input-requirement-tooltip.component';
-import { GeolocationService } from '../../../services/geolocation/geolocation.service';
-import { DeviceInfoService } from '../../../services/device/device-info.service';
+import { GeolocationService } from '../../../services/system/geolocation/geolocation.service';
+import { DeviceInfoService } from '../../../services/system/device/device-info.service';
 import { EmailInputValidator } from '../../../services/auth/validation/registration.component/email-input-validator';
 
 /**
@@ -59,11 +57,10 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private translocoService: TranslocoService,
     private authService: AuthService,
-    private userTokenService: UserTokenManagementService,
     private stringNotEmptyValidator: StringNotEmptyValidatorService,
     private geolocationService: GeolocationService,
     private deviceInfoService: DeviceInfoService,
-    private emailCorrectValidator: EmailInputValidator
+    private emailCorrectValidator: EmailInputValidator,
   ) {
     this.initializeRequirements();
   }
@@ -146,10 +143,8 @@ export class LoginComponent implements OnInit {
     };
 
     this.authService.login(loginData).subscribe({
-      next: (response) => {
-        this.userTokenService.revalidateAuthentication(response);
+      next: () => {
         this.buttonActive = true;
-
         this.router.navigate(['/dashboard']);
       },
       error: (error) => {

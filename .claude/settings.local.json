@@ -13,7 +13,11 @@
       "Bash(git mv:*)",
       "Bash(powershell -Command:*)",
       "Bash(timeout:*)",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "Bash(ng build:*)",
+      "Bash(ng test:*)",
+      "Bash(ren:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }

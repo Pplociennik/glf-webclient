@@ -1,12 +1,12 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../../../services/auth/auth-service';
 import { UserTokenManagementService } from '../../../../services/user-token-management-service';
-import { Route, Router } from '@angular/router';
-import { MatMenuModule, MatMenuPanel, MatMenuTrigger } from '@angular/material/menu';
+import { Router } from '@angular/router';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
-import { LanguageService } from '../../../../services/lang/language-service';
+import { TranslocoModule } from '@ngneat/transloco';
+import { LanguageService } from '../../../../services/system/lang/language-service';
 
 /**
  * Component that displays the user account dropdown menu.
@@ -24,7 +24,7 @@ export class AccountMenuComponent {
     private authService: AuthService,
     private userTokenService: UserTokenManagementService,
     private router: Router,
-    private languageService: LanguageService
+    private languageService: LanguageService,
   ) {}
 
   /**
@@ -32,14 +32,12 @@ export class AccountMenuComponent {
    * Clears the stored user token on successful logout.
    */
   logoutUser(): void {
-    const userAccessToken = this.userTokenService.getStoredAccessToken();
-
-    this.authService.logoutCurrentUserSession(userAccessToken).subscribe({
-      next: (response) => {
+    this.authService.logoutCurrentUserSession().subscribe({
+      next: () => {
         this.userTokenService.clearToken();
         this.router.navigate(['/']);
       },
-      error: (error) => {
+      error: () => {
         window.alert('Error!');
       },
     });

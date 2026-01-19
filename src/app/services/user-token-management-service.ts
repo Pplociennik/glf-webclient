@@ -93,9 +93,7 @@ export class UserTokenManagementService {
     }
 
     try {
-      const response = await firstValueFrom(
-        this.sessionRefreshService.refreshUserSession(userToken)
-      );
+      const response = await firstValueFrom(this.sessionRefreshService.refreshUserSession());
       this.revalidateAuthentication(response);
       return true;
     } catch {

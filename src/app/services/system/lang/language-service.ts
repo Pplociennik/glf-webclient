@@ -6,13 +6,13 @@ import { TranslocoService } from '@ngneat/transloco';
  * Handles language detection, switching, and persistence via Transloco.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LanguageService {
   private readonly defaultLanguage: string = 'en';
   private readonly supportedLanguages: string[] = ['en', 'pl', 'de', 'szl'];
 
-  constructor(private translocoService: TranslocoService) { }
+  constructor(private translocoService: TranslocoService) {}
 
   /**
    * Initializes the application language based on browser settings.
@@ -61,5 +61,4 @@ export class LanguageService {
   getCurrentLanguage(): string {
     return this.translocoService.getActiveLang();
   }
-
 }
