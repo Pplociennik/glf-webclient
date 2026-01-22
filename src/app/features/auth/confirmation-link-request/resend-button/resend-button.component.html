@@ -1,0 +1,9 @@
+@if (!isCounting) {
+  <button class="confirm-btn" (click)="onSubmit()">
+    {{ btnText }}
+  </button>
+} @else {
+  <div class="countdown-info">
+    <strong>{{ countdown }}</strong>
+  </div>
+}

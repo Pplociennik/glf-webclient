@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslocoModule } from '@ngneat/transloco';
-import { AuthService } from '../../../services/auth/auth-service';
+import { AuthService } from '../../../services/features/auth/auth-service';
 import { PasswordResetRequest } from '../../../shared/models/auth/password-reset-request';
-import { AccountsService } from '../../../services/accounts/accounts-service';
+import { AccountsService } from '../../../services/features/accounts/accounts-service';
 import { OperationInfoBarComponent } from '../../../shared/components/info/operation-info-bar/operation-info-bar.component';
 
 /**

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../../../services/auth/auth-service';
+import { AuthService } from '../../../../services/features/auth/auth-service';
 import { UserTokenManagementService } from '../../../../services/user-token-management-service';
 import { Router } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, firstValueFrom } from 'rxjs';
-import { environment } from '../../../environments/environment';
-import { ClientAuthRequest } from '../../shared/models/auth/client-auth-request';
-import { KeycloakTokenResponse } from '../../shared/models/auth/keycloak-token-response';
+import { environment } from '../../../../environments/environment';
+import { ClientAuthRequest } from '../../../shared/models/auth/client-auth-request';
+import { KeycloakTokenResponse } from '../../../shared/models/auth/keycloak-token-response';
 
 /**
  * Service for managing OAuth2 client credentials tokens.

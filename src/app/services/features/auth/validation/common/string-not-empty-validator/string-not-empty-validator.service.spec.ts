@@ -1,4 +1,4 @@
-import { StringNotEmptyValidatorService } from './value-not-empty-validator.service';
+import { StringNotEmptyValidatorService } from './string-not-empty-validator.service';
 import { TestBed } from '@angular/core/testing';
 
 describe('NotEmptyValidatorService', () => {

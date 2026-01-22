@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { from, Observable, switchMap } from 'rxjs';
-import { ClientTokenManagementService } from '../../../services/auth/client-token-management.service';
+import { ClientTokenManagementService } from '../../../services/features/auth/client-token-management.service';
 
 /**
  * URLs that should not have the client Authorization header attached.
@@ -32,7 +32,7 @@ function isExcluded(request: HttpRequest<unknown>): boolean {
  */
 export function ClientAuthInterceptor(
   request: HttpRequest<unknown>,
-  next: HttpHandlerFn
+  next: HttpHandlerFn,
 ): Observable<HttpEvent<unknown>> {
   if (isExcluded(request)) {
     return next(request);
@@ -46,6 +46,6 @@ export function ClientAuthInterceptor(
         headers: request.headers.set('Authorization', `Bearer ${token}`),
       });
       return next(updatedRequest);
-    })
+    }),
   );
 }

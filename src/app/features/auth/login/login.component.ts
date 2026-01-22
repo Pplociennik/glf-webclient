@@ -1,16 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
-import { AuthService } from '../../../services/auth/auth-service';
+import { AuthService } from '../../../services/features/auth/auth-service';
 import { LoginModel } from '../../../shared/models/auth/authentication-request-model';
 import { FormsModule } from '@angular/forms';
 import { OperationInfoBarComponent } from '../../../shared/components/info/operation-info-bar/operation-info-bar.component';
-import { StringNotEmptyValidatorService } from '../../../services/auth/validation/common/string-not-empty-validator/string-not-empty-validator.service';
+import { StringNotEmptyValidatorService } from '../../../services/features/auth/validation/common/string-not-empty-validator/string-not-empty-validator.service';
 import { InputRequirementModel } from '../../../shared/models/input-requirement-model';
 import { InputRequirementTooltipComponent } from '../../../shared/components/input-requirement-tooltip-component/input-requirement-tooltip.component';
 import { GeolocationService } from '../../../services/system/geolocation/geolocation.service';
 import { DeviceInfoService } from '../../../services/system/device/device-info.service';
-import { EmailInputValidator } from '../../../services/auth/validation/registration.component/email-input-validator';
+import { EmailInputValidator } from '../../../services/features/auth/validation/registration.component/email-input-validator';
 
 /**
  * Component for user login functionality.
@@ -147,8 +148,8 @@ export class LoginComponent implements OnInit {
         this.buttonActive = true;
         this.router.navigate(['/dashboard']);
       },
-      error: (error) => {
-        this.errorMessage = error.errorMessage || error.error.errorMessage;
+      error: (error: HttpErrorResponse) => {
+        this.errorMessage = error.error?.errorMessage ?? 'An error occurred';
         this.showError = true;
         this.email = '';
         this.password = '';

@@ -1,0 +1,61 @@
+$color-primary: #2d5016;
+$color-primary-dark: #1f3a0f;
+$color-text: #2d5016;
+$color-text-light: #666;
+$color-border: #ccc;
+$color-placeholder: #aaa;
+$color-error: #dc3545;
+$color-white: #fff;
+$shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-focus: 0 0 0 2px rgba(45, 80, 22, 0.15);
+$transition: all 0.3s ease;
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  max-width: 80%;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title-text {
+  text-align: center;
+  color: #1f3a0f;
+  font-size: large;
+  font-weight: bold;
+
+  padding-bottom: 0.5vh;
+  border-bottom: 1px solid gray;
+}
+
+.main-message {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-text {
+  color: $color-text-light;
+}
+
+.confirm-btn {
+  margin-left: 0.5vh;
+  color: #1f3a0f;
+  font-weight: bolder;
+}

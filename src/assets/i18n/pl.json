@@ -78,5 +78,14 @@
     "sendResetLink": "Wyślij link",
     "sendResetLinkTooltip": "Proszę wprowadzić swój adres email",
     "passwordResetSuccessText": "Jeśli adres email, który wprowadziłeś, istnieje w naszej bazie danych, wyślemy Ci link do resetowania hasła. Jeśli nie znajdziesz e-maila w swojej skrzynce, sprawdź proszę folder spam."
+  },
+  "confirmationLinkRequestComponent": {
+    "titleText": "Twoje konto zostało założone",
+    "mainText": "Na Twój adres email wysłaliśmy wiadomość z linkiem potwierdzającym. Jeśli nie otrzymałeś wiadomości, kliknij",
+    "confirmButton": "TUTAJ",
+    "dialog": {
+      "titleText": "Twój adres email nie został jeszcze zweryfikowany",
+      "mainText": "Aby wysłać nowy link potwierdzający, kliknij "
+    }
   }
 }
