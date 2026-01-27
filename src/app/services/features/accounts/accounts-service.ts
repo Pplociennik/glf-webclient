@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
-import { ApiPaths } from '../../enums/ApiPaths';
-import { PasswordResetRequest } from '../../shared/models/auth/password-reset-request';
-import { Response } from '../../shared/models/response/Response';
+import { environment } from '../../../../environments/environment';
+import { ApiPaths } from '../../../enums/ApiPaths';
+import { PasswordResetRequest } from '../../../shared/models/auth/password-reset-request';
+import { Response } from '../../../shared/models/response/response.model';
 
 /**
  * Service for account management operations.

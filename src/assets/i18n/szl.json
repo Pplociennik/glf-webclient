@@ -78,5 +78,14 @@
     "sendResetLink": "Poślij link",
     "sendResetLinkTooltip": "Proszã wkludzić swoj adres email",
     "passwordResetSuccessText": "Jak adres email, co żeś wkludził, je w naszej bazie, to podeślemy Ci link do resetowania hasła. Jak niy znŏdziesz maila we swojej skrzynce, to zajrzij tyż do folderu spam."
+  },
+  "confirmationLinkRequestComponent": {
+    "titleText": "Twoje kōnto je już założōne",
+    "mainText": "Na Twōj adres e-mail posłali my wiadōmość z linkym do potwierdzynio. Jak żeś niy dostał wiadōmości, kliknij",
+    "confirmButton": "SAM",
+    "dialog": {
+      "titleText": "Twój email niy boł jeszcze potwierdzōny",
+      "mainText": "Coby wysłać nowy link do potwierdzynio, kliknij "
+    }
   }
 }

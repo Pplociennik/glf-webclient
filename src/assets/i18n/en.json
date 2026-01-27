@@ -78,5 +78,14 @@
     "sendResetLink": "Send Reset Link",
     "sendResetLinkTooltip": "Please enter your email address",
     "passwordResetSuccessText": "If the email address you entered exists in our system, we will send you a password reset link. If you don’t find the email in your inbox, please check your spam or junk folder."
+  },
+  "confirmationLinkRequestComponent": {
+    "titleText": "Your account has been created",
+    "mainText": "We have sent an email with a confirmation link to your email address. If you did not receive the message, click",
+    "confirmButton": "HERE",
+    "dialog": {
+      "titleText": "Your email address has not been verified yet",
+      "mainText": "To send a new confirmation link, click "
+    }
   }
 }

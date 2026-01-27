@@ -3,18 +3,19 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { InputRequirementTooltipComponent } from '../../../shared/components/input-requirement-tooltip-component/input-requirement-tooltip.component';
 import { InputRequirementModel } from '../../../shared/models/input-requirement-model';
-import { UsernameInputValidator } from '../../../services/auth/validation/registration.component/username-input-validator';
-import { EmailInputValidator } from '../../../services/auth/validation/registration.component/email-input-validator';
-import { PasswordInputValidator } from '../../../services/auth/validation/registration.component/password-input-validator';
+import { UsernameInputValidator } from '../../../services/features/auth/validation/registration.component/username-input-validator';
+import { EmailInputValidator } from '../../../services/features/auth/validation/registration.component/email-input-validator';
+import { PasswordInputValidator } from '../../../services/features/auth/validation/registration.component/password-input-validator';
 import { FormsModule } from '@angular/forms';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
-import { AuthService } from '../../../services/auth/auth-service';
+import { AuthService } from '../../../services/features/auth/auth-service';
 import {
   CredentialsModel,
   RegistrationModel,
 } from '../../../shared/models/auth/registration-model';
 import { ConfirmationLinkRequest } from '../../../shared/models/auth/confirmation-link-request';
 import { ErrorInfoComponent } from '../../../shared/components/info/operation-info-bar/error-info/error-info.component';
+import { ConfirmationLinkRequestComponent } from '../confirmation-link-request/confirmation-link-request/confirmation-link-request';
 
 /**
  * Component for new user registration.
@@ -30,6 +31,7 @@ import { ErrorInfoComponent } from '../../../shared/components/info/operation-in
     TranslocoModule,
     RouterLink,
     ErrorInfoComponent,
+    ConfirmationLinkRequestComponent,
   ],
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
@@ -52,6 +54,9 @@ export class RegistrationComponent {
 
   showError: boolean = false;
   errorMessage: string = '';
+
+  registrationFinished: boolean = false;
+  loading: boolean = false;
 
   /**
    * Handles username field validity change events.
@@ -115,7 +120,7 @@ export class RegistrationComponent {
     private emailInputValidator: EmailInputValidator,
     private passwordInputValidator: PasswordInputValidator,
     private translocoService: TranslocoService,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
     this.initializeRequirements();
   }
@@ -216,6 +221,7 @@ export class RegistrationComponent {
       return;
     }
 
+    this.loading = true;
     const registrationData: RegistrationModel = {
       email: this.email,
       username: this.username,
@@ -230,9 +236,10 @@ export class RegistrationComponent {
 
     this.authService.register(registrationData).subscribe({
       next: (response) => {
-        console.log('sukces');
+        this.registrationFinished = true;
       },
       error: (error) => {
+        this.loading = false;
         this.errorMessage = error.errorMessage || error.error.errorMessage;
         this.showError = true;
       },

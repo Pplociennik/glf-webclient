@@ -1,8 +1,18 @@
-import { HttpEvent, HttpHandlerFn, HttpRequest, HttpResponse } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandler,
+  HttpHandlerFn,
+  HttpRequest,
+  HttpResponse,
+} from '@angular/common/http';
 import { inject } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, throwError } from 'rxjs';
 import { UserTokenManagementService } from '../../../services/user-token-management-service';
 import { Response, ResponseData } from '../../../shared/models/response/response.model';
+import { catchError } from 'rxjs/operators';
+import { ErrorResponse } from '../../../shared/models/response/error-response.model';
+import { ResponseActionService } from '../../../services/response/response-action.service';
 
 /**
  * URLs that should not have token revalidation applied.
@@ -23,15 +33,7 @@ function isExcluded(request: HttpRequest<unknown>): boolean {
   return EXCLUDED_URLS.some((url) => request.url.includes(url));
 }
 
-/**
- * HTTP interceptor that handles successful responses and revalidates user authentication.
- * Extracts authentication tokens from response bodies and updates the user session.
- * Skips Keycloak requests, translation files, and external APIs.
- * @param request - The outgoing HTTP request
- * @param next - The next handler in the interceptor chain
- * @returns Observable of the HTTP event stream
- */
-export function SuccessfulResponseInterceptor(
+export function ErrorResponseInterceptor(
   request: HttpRequest<unknown>,
   next: HttpHandlerFn,
 ): Observable<HttpEvent<unknown>> {
@@ -39,13 +41,18 @@ export function SuccessfulResponseInterceptor(
     return next(request);
   }
 
-  const tokenService = inject(UserTokenManagementService);
+  const actionService = inject(ResponseActionService);
 
   return next(request).pipe(
-    tap((event) => {
-      if (event instanceof HttpResponse && event.body) {
-        tokenService.revalidateAuthentication(event.body as Response<ResponseData>);
+    catchError((error: HttpErrorResponse) => {
+      const errorResponse = error.error as ErrorResponse<string> | undefined;
+      const actionFlag = errorResponse?.clientActionFlag;
+
+      if (actionFlag) {
+        actionService.executeAction(errorResponse!, actionFlag);
       }
+
+      return throwError(() => error);
     }),
   );
 }

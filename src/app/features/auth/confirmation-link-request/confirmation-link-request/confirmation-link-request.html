@@ -1,0 +1,12 @@
+<div class="main-container">
+  <div class="center-container">
+    <span class="title-text">{{ titleMessage }}</span>
+    <div class="main-message">
+      <span class="main-text">{{ mainMessage }}</span>
+      <app-resend-button
+        [btnText]="'confirmationLinkRequestComponent.confirmButton' | transloco"
+        (btnClicked)="onSubmit()"
+      />
+    </div>
+  </div>
+</div>

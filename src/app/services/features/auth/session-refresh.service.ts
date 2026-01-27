@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Response, ResponseData } from '../../shared/models/response/Response';
-import { environment } from '../../../environments/environment';
-import { ApiPaths } from '../../enums/ApiPaths';
+import { Response, ResponseData } from '../../../shared/models/response/response.model';
+import { environment } from '../../../../environments/environment';
+import { ApiPaths } from '../../../enums/ApiPaths';
 
 /**
  * Service responsible for refreshing user sessions.

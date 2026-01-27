@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Response, ResponseData } from '../shared/models/response/Response';
-import { SessionRefreshService } from './auth/session-refresh.service';
+import { Response, ResponseData } from '../shared/models/response/response.model';
+import { SessionRefreshService } from './features/auth/session-refresh.service';
 import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
 
 /**

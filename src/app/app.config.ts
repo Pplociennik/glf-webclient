@@ -5,6 +5,7 @@ import {
   isDevMode,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -14,6 +15,7 @@ import { ClientAuthInterceptor } from './core/interceptors/request/client-auth.i
 import { UserAuthInterceptor } from './core/interceptors/request/user-auth.interceptor';
 import { LanguageInterceptor } from './core/interceptors/request/language.interceptor';
 import { SuccessfulResponseInterceptor } from './core/interceptors/response/successful-response.interceptor';
+import { ErrorResponseInterceptor } from './core/interceptors/response/error-response.interceptor';
 
 /**
  * Application configuration with providers for routing, HTTP, and i18n.
@@ -24,12 +26,14 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
+    provideAnimationsAsync(),
     provideRouter(routes),
     provideHttpClient(
       withInterceptors([
         ClientAuthInterceptor,
         UserAuthInterceptor,
         LanguageInterceptor,
+        ErrorResponseInterceptor,
         SuccessfulResponseInterceptor,
       ]),
     ),

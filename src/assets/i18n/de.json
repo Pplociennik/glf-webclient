@@ -78,5 +78,14 @@
     "sendResetLink": "Senden Sie den Link",
     "sendResetLinkTooltip": "Bitte geben Sie Ihre E-Mail-Adresse ein",
     "passwordResetSuccessText": "Wenn die E-Mail-Adresse, die Sie eingegeben haben, in unserem System existiert, werden wir Ihnen einen Passwort-Reset-Link senden. Wenn Sie die E-Mail nicht in Ihrem Posteingang finden, überprüfen Sie bitte Ihre Spam- oder Spam-Ordner."
+  },
+  "confirmationLinkRequestComponent": {
+    "titleText": "Ihr Konto wurde erstellt",
+    "mainText": "Wir haben eine E-Mail mit einem Bestätigungslink an Ihre E-Mail-Adresse gesendet. Wenn Sie keine Nachricht erhalten haben, klicken Sie",
+    "confirmButton": "HIER",
+    "dialog": {
+      "titleText": "Deine E-Mail-Adresse wurde noch nicht bestätigt",
+      "mainText": "Um einen neuen Bestätigungslink zu senden, klicke "
+    }
   }
 }

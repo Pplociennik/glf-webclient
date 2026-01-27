@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RegistrationModel } from '../../shared/models/auth/registration-model';
-import { Response, ResponseData } from '../../shared/models/response/Response';
-import { environment } from '../../../environments/environment';
-import { ApiPaths } from '../../enums/ApiPaths';
-import { LoginModel } from '../../shared/models/auth/authentication-request-model';
-import { ConfirmationLinkRequest } from '../../shared/models/auth/confirmation-link-request';
+import { RegistrationModel } from '../../../shared/models/auth/registration-model';
+import { Response, ResponseData } from '../../../shared/models/response/response.model';
+import { environment } from '../../../../environments/environment';
+import { ApiPaths } from '../../../enums/ApiPaths';
+import { LoginModel } from '../../../shared/models/auth/authentication-request-model';
+import { ConfirmationLinkRequest } from '../../../shared/models/auth/confirmation-link-request';
 
 /**
  * Service responsible for user authentication operations.
@@ -47,7 +47,7 @@ export class AuthService {
    * @returns Observable containing the confirmation link request response
    */
   requestConfirmationLink(linkRequestModel: ConfirmationLinkRequest): Observable<Response<void>> {
-    const url = `${this.baseUrl}${environment.endpoints.emailConfirmationRequest}`;
+    const url = `${environment.baseUrl}${ApiPaths.Accounts}${environment.endpoints.emailConfirmationRequest}`;
     return this.httpClient.post<Response<void>>(url, linkRequestModel);
   }
 
@@ -56,7 +56,7 @@ export class AuthService {
    * @returns Observable containing the logout response
    */
   logoutCurrentUserSession(): Observable<Response<void>> {
-    const url = `${this.baseUrl}${environment.endpoints.logout}`;
+    const url = `${environment.baseUrl}${ApiPaths.Auth}${environment.endpoints.logout}`;
     return this.httpClient.delete<Response<void>>(url);
   }
 }

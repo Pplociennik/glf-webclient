@@ -6,6 +6,7 @@ import { PasswordResetComponent } from './features/auth/password-reset/password-
 import { DashboardComponent } from './features/dashboard.component';
 import { guestGuard } from './guards/guest.guard';
 import { authGuard } from './guards/auth.guard';
+import { ConfirmationLinkRequestComponent } from './features/auth/confirmation-link-request/confirmation-link-request/confirmation-link-request';
 
 /**
  * Application routing configuration.
