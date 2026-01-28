@@ -87,5 +87,60 @@
       "titleText": "Deine E-Mail-Adresse wurde noch nicht bestätigt",
       "mainText": "Um einen neuen Bestätigungslink zu senden, klicke "
     }
+  },
+  "accountManagement": {
+    "header": {
+      "backBtn": "Dashboard"
+    },
+    "menu": {
+      "userData": "Benutzerdaten",
+      "accountSecurity": "Kontosicherheit",
+      "social": "Community",
+      "deleteAccount": "Konto löschen"
+    },
+    "deleteAccount": {
+      "title": "Bestätigen",
+      "mainMessage": "Sind Sie sicher, dass Sie Ihr Konto und alle damit verbundenen Daten löschen möchten? Das Löschen Ihres Kontos ist dauerhaft und kann nicht rückgängig gemacht werden.",
+      "acceptButton": "JA",
+      "denyButton": "NEIN"
+    },
+    "accountSecurity": {
+      "title": "Ihre aktiven Sitzungen",
+      "sessions": {
+        "start": "Beginn",
+        "lastActivity": "Letzte Aktivität",
+        "device": "Gerät",
+        "location": "Standort",
+        "currentSession": "Aktuelle Sitzung",
+        "action": "Aktion",
+        "closeSession": "Beenden",
+        "closeAll": "Alle beenden"
+      },
+      "changePassword": {
+        "title": "Passwort ändern",
+        "warningText": "Achtung! Denken Sie daran, dass das Ändern Ihres Passworts alle Ihre aktiven Sitzungen beendet und Sie sich erneut anmelden müssen.",
+        "confirmButton": "Bestätigen",
+        "currentPassword": {
+          "header": "Aktuelles Passwort",
+          "placeholder": "Aktuelles Passwort eingeben",
+          "requirement": "Dieses Feld darf nicht leer sein"
+        },
+        "newPassword": {
+          "header": "Neues Passwort",
+          "placeholder": "Neues Passwort eingeben",
+          "requirements": {
+            "differentThatCurrent": "Das neue Passwort muss sich vom aktuellen Passwort unterscheiden"
+          }
+        },
+        "confirmNewPassword": {
+          "header": "Neues Passwort wiederholen",
+          "placeholder": "Neues Passwort wiederholen"
+        },
+        "alerts": {
+          "success": "Sie wurden abgemeldet. Bitte melden Sie sich erneut mit Ihrem neuen Passwort an.",
+          "error": "Ein Fehler ist aufgetreten"
+        }
+      }
+    }
   }
 }

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import {
-  ActionExecutionStrategy,
+  ClearSessionDataAndReloginStrategy,
+  ClearUserSessionDataStrategy,
   VerifyUserEmailStrategy,
 } from './strategy/action-execution.strategy';
 import { ErrorResponse } from '../../shared/models/response/error-response.model';
 import { DialogService } from '../gui/dialog.service';
 import { ResponseActionKeys } from '../../enums/ResponseActionKeys';
+import { Response } from '../../shared/models/response/response.model';
 
 /**
  * @description
@@ -15,12 +17,27 @@ import { ResponseActionKeys } from '../../enums/ResponseActionKeys';
   providedIn: 'root',
 })
 export class ResponseActionService {
-  constructor(private verifyUserEmailStrategy: VerifyUserEmailStrategy) {}
+  constructor(
+    private verifyUserEmailStrategy: VerifyUserEmailStrategy,
+    private clearUserSessionDataStrategy: ClearUserSessionDataStrategy,
+    private clearSessionDataAndReloginStrategy: ClearSessionDataAndReloginStrategy,
+  ) {}
 
-  executeAction(data: ErrorResponse<string>, actionKey: string) {
+  executeAction(data: unknown, actionKey: string) {
     switch (actionKey) {
       case ResponseActionKeys.VERIFY_USER_EMAIL: {
-        this.verifyUserEmailStrategy.execute(data);
+        const typedData = data as ErrorResponse<string>;
+        this.verifyUserEmailStrategy.execute(typedData);
+        break;
+      }
+      case ResponseActionKeys.CLEAR_USER_SESSION_DATA: {
+        const typedData = data as Response<void>;
+        this.clearUserSessionDataStrategy.execute(typedData);
+        break;
+      }
+      case ResponseActionKeys.USER_PASSWORD_CHANGED: {
+        const typedData = data as Response<void>;
+        this.clearSessionDataAndReloginStrategy.execute(typedData);
         break;
       }
     }

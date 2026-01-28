@@ -1,0 +1,29 @@
+@use 'variables' as *;
+
+.main-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+
+  .change-password {
+    // position: absolute;
+    width: 100%;
+    // height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .user-sessions {
+    // position: absolute;
+    width: 100%;
+    // height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

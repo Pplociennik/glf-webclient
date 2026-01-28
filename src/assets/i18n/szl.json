@@ -87,5 +87,60 @@
       "titleText": "Twój email niy boł jeszcze potwierdzōny",
       "mainText": "Coby wysłać nowy link do potwierdzynio, kliknij "
     }
+  },
+  "accountManagement": {
+    "header": {
+      "backBtn": "Kokpyt"
+    },
+    "menu": {
+      "userData": "Dane używocza",
+      "accountSecurity": "Bezpieczność konta",
+      "social": "Społeczność",
+      "deleteAccount": "Skasuj konto"
+    },
+    "deleteAccount": {
+      "title": "Potwiyrdź",
+      "mainMessage": "Na zicher chcesz skasować swoje kōnto i wszyjske dane z nim zwiōnzane? Skasowanie kōnta je permanentne i niy idzie tego cofnōnć.",
+      "acceptButton": "JA",
+      "denyButton": "NIY"
+    },
+    "accountSecurity": {
+      "title": "Twoje aktywne sesyje",
+      "sessions": {
+        "start": "Poczōntek",
+        "lastActivity": "Ôstatnio aktywne",
+        "device": "Maszina",
+        "location": "Plac",
+        "currentSession": "Teroźno sesyjo",
+        "action": "Akcyjo",
+        "closeSession": "Zawrzij",
+        "closeAll": "Zawrzij wszyjske"
+      },
+      "changePassword": {
+        "title": "Zmiyń swoje hasło",
+        "warningText": "Pozōr! Pamiyńtej, że zmiana hasła zawrze wszyjske Twoje aktywne sesyje i bedziesz musioł wlogować sie nazod.",
+        "confirmButton": "Potwierdź",
+        "currentPassword": {
+          "header": "Terazne hasło",
+          "placeholder": "Wpisz terazne hasło",
+          "requirement": "To pole niy może być puste"
+        },
+        "newPassword": {
+          "header": "Nowe hasło",
+          "placeholder": "Wpisz nowe hasło",
+          "requirements": {
+            "differentThatCurrent": "Nowe hasło musi być inksze niż terazne hasło"
+          }
+        },
+        "confirmNewPassword": {
+          "header": "Powtórz nowe hasło",
+          "placeholder": "Powtórz nowe hasło"
+        },
+        "alerts": {
+          "success": "Zostołeś wylogowany. Wloguj sie nazod używajōnc nowego hasła.",
+          "error": "Wystōmpił feler"
+        }
+      }
+    }
   }
 }

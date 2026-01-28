@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Response, ResponseData } from '../../../shared/models/response/response.model';
 import { environment } from '../../../../environments/environment';
 import { ApiPaths } from '../../../enums/ApiPaths';
+import { Endpoints } from '../../../enums/Endpoints';
 
 /**
  * Service responsible for refreshing user sessions.
@@ -24,7 +25,7 @@ export class SessionRefreshService {
    * @returns Observable containing the session refresh response
    */
   refreshUserSession(): Observable<Response<ResponseData>> {
-    const url = `${this.baseUrl}${environment.endpoints.sessionRefresh}`;
+    const url = `${this.baseUrl}${Endpoints.SessionRefresh}`;
     return this.httpClient.post<Response<ResponseData>>(url, {});
   }
 }

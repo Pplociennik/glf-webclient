@@ -14,7 +14,7 @@
         <mat-icon>account_box</mat-icon>
         <span>{{ 'accountsMenu.profile' | transloco }}</span>
       </button>
-      <button mat-menu-item disabled>
+      <button mat-menu-item (click)="goToAccountManagement()">
         <mat-icon>settings</mat-icon>
         <span>{{ 'accountsMenu.accountManagement' | transloco }}</span>
       </button>

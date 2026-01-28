@@ -193,3 +193,21 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+
+// alerts
+
+.error-snackbar-panel {
+  @include mat.snack-bar-overrides(
+    (
+      container-color: #cd9198,
+    )
+  );
+}
+
+.success-snackbar-panel {
+  @include mat.snack-bar-overrides(
+    (
+      container-color: rgb(132, 180, 127),
+    )
+  );
+}

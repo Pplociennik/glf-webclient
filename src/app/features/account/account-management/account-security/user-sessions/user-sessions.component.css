@@ -1,0 +1,52 @@
+@use 'variables' as *;
+.main-container .mat-mdc-cell,
+.main-container .mat-mdc-header-cell {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main-container table {
+  width: 100%;
+}
+
+.main-container h2 {
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.main-container .curr-session-mark {
+  color: green;
+}
+
+.main-container .close-btn {
+  background-color: white;
+}
+
+.main-container .close-btn .btn-content {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-container .close-btn .btn-content mat-icon {
+  color: red;
+}
+
+.main-container .close-btn .btn-content span {
+  font-size: medium;
+  color: red;
+  font-weight: bold;
+}
+/*# sourceMappingURL=user-sessions.component.css.map */

@@ -1,0 +1,75 @@
+<div class="main-container">
+  <h2>{{ 'accountManagement.accountSecurity.title' | transloco }}</h2>
+  <mat-table [dataSource]="sessionsArray" class="mat-elevation-z8">
+    <!-- Start Column -->
+    <ng-container matColumnDef="start">
+      <mat-header-cell *matHeaderCellDef>
+        {{ 'accountManagement.accountSecurity.sessions.start' | transloco }}
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.start | date: 'dd/MM/yyyy HH:mm' }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Last Access Column -->
+    <ng-container matColumnDef="lastAccess">
+      <mat-header-cell *matHeaderCellDef>
+        {{ 'accountManagement.accountSecurity.sessions.lastActivity' | transloco }}
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.lastAccess | date: 'dd/MM/yyyy HH:mm' }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Device Column -->
+    <ng-container matColumnDef="device">
+      <mat-header-cell *matHeaderCellDef>
+        {{ 'accountManagement.accountSecurity.sessions.device' | transloco }}
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.device }} </mat-cell>
+    </ng-container>
+
+    <!-- Location Column -->
+    <ng-container matColumnDef="location">
+      <mat-header-cell *matHeaderCellDef>
+        {{ 'accountManagement.accountSecurity.sessions.location' | transloco }}
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.location }} </mat-cell>
+    </ng-container>
+
+    <!-- Current session Column -->
+    <ng-container matColumnDef="currSession">
+      <mat-header-cell *matHeaderCellDef>
+        {{ 'accountManagement.accountSecurity.sessions.currentSession' | transloco }}
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        @if (currentSessionId === element.id) {
+          <div class="curr-session-mark">
+            <mat-icon>check</mat-icon>
+          </div>
+        }
+      </mat-cell>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef>
+        {{ 'accountManagement.accountSecurity.sessions.action' | transloco }}
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button class="close-btn" (click)="onSessionCloseClick(element.id)">
+          <div class="btn-content">
+            <mat-icon>close</mat-icon>
+            <!-- <span>{{ 'accountManagement.accountSecurity.sessions.closeSession' | transloco }}</span> -->
+          </div>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <button class="close-all-btn" (click)="closeAllUserSessions()">
+    <span>{{ 'accountManagement.accountSecurity.sessions.closeAll' | transloco }}</span>
+  </button>
+</div>

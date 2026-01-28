@@ -1,0 +1,55 @@
+@use 'variables' as *;
+
+.main-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  .main-panel-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    .panel-content {
+      position: absolute;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .title {
+        font-size: larger;
+        font-weight: bolder;
+        color: $color-primary-dark;
+        margin-bottom: 10px;
+        border-bottom: 1px solid $color-primary-dark;
+      }
+
+      .main-message {
+        font-size: large;
+        color: $color-text-light;
+        text-align: center;
+      }
+
+      .buttons {
+        display: inline;
+        margin-top: 20px;
+
+        .decision-btn {
+          font-size: larger;
+          color: white;
+          font-weight: bolder;
+          margin-left: 50px;
+          margin-right: 50px;
+          background-color: black;
+          border: 2px solid black;
+          padding-left: 30px;
+          padding-right: 30px;
+          border-radius: 30px;
+        }
+      }
+    }
+  }
+}
