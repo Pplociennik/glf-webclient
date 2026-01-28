@@ -1,0 +1,138 @@
+$color-primary: #2d5016;
+$color-primary-dark: #1f3a0f;
+$color-text: #2d5016;
+$color-text-light: #666;
+$color-border: #ccc;
+$color-placeholder: #aaa;
+$color-error: #dc3545;
+$color-white: #fff;
+$shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-focus: 0 0 0 2px rgba(45, 80, 22, 0.15);
+$transition: all 0.3s ease;
+
+.main-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+  background: #f5f7f7;
+  background: linear-gradient(
+    157deg,
+    rgba(245, 247, 247, 1) 0%,
+    rgba(250, 255, 250, 1) 11%,
+    rgba(237, 245, 239, 1) 21%,
+    rgba(236, 242, 233, 1) 28%,
+    rgba(235, 242, 238, 0.98) 39%,
+    rgba(233, 247, 247, 1) 47%,
+    rgba(225, 242, 235, 1) 53%,
+    rgba(218, 240, 227, 1) 66%,
+    rgba(217, 235, 216, 1) 81%,
+    rgba(123, 199, 101, 1) 100%
+  );
+}
+
+.header-container {
+  position: relative;
+  display: block;
+  flex-direction: row;
+  height: 8vh;
+  border-bottom: 1px solid gray;
+}
+
+.header-container h2 {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: $color-text;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-panel-container {
+  position: relative;
+  display: block;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 80%;
+  width: 60%;
+  box-shadow: $shadow-sm;
+  background-color: white;
+}
+
+.operational-panel-container {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 8vh);
+
+  mat-sidenav-container {
+    height: 100%;
+  }
+
+  mat-sidenav {
+    position: absolute;
+    height: 100%;
+    width: 20%;
+  }
+
+  mat-sidenav-content {
+    position: absolute;
+    width: 80%;
+    right: 0px;
+    border-left: 2px solid gray;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.side-menu {
+  position: absolute;
+  flex-direction: column;
+  top: 10vh;
+  width: auto;
+  height: auto;
+  box-shadow: 1px solid $shadow-sm;
+}
+
+.side-menu-btn {
+  display: block;
+  width: 100%;
+  height: 8vh;
+  width: 100%;
+  box-shadow: $shadow-sm;
+  background-color: white;
+  border: 1px solid lightgray;
+
+  &:disabled {
+    background-color: #1f3a0f;
+
+    &:disabled span {
+      color: white;
+    }
+  }
+}
+
+.side-menu-btn span {
+  color: $color-primary-dark;
+  font-weight: bolder;
+  font-size: large;
+}
+
+.delete-account-btn {
+  bottom: 0;
+  width: 100%;
+  height: 8vh;
+  width: 10vw;
+  box-shadow: $shadow-sm;
+  margin-bottom: 5px;
+  background-color: white;
+}
+
+.delete-account-btn span {
+  color: red;
+  font-weight: bolder;
+  font-size: large;
+}
+
+.settings-container {
+}

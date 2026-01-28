@@ -7,6 +7,10 @@ import { DashboardComponent } from './features/dashboard.component';
 import { guestGuard } from './guards/guest.guard';
 import { authGuard } from './guards/auth.guard';
 import { ConfirmationLinkRequestComponent } from './features/auth/confirmation-link-request/confirmation-link-request/confirmation-link-request';
+import { AccountManagementComponent } from './features/account/account-management/account-management.component';
+import { UserDataComponent } from './features/account/account-management/user-data/user-data.component';
+import { AccountSecurityComponent } from './features/account/account-management/account-security/account-security.component';
+import { SocialComponent } from './features/account/account-management/social/social.component';
 
 /**
  * Application routing configuration.
@@ -40,6 +44,17 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'account',
+    component: AccountManagementComponent,
+    children: [
+      { path: '', redirectTo: 'user-data', pathMatch: 'full' },
+      { path: 'user-data', component: UserDataComponent },
+      { path: 'security', component: AccountSecurityComponent },
+      { path: 'social', component: SocialComponent },
+    ],
     canActivate: [authGuard],
   },
 ];
