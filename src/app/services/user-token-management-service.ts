@@ -78,13 +78,6 @@ export class UserTokenManagementService {
    * @returns Promise resolving to true if the token is valid or was successfully refreshed
    */
   async isStillValid(): Promise<boolean> {
-    const localTokenValid = this.checkLocalToken();
-
-    if (localTokenValid) {
-      this.authenticatedSubject.next(true);
-      return true;
-    }
-
     const userToken = this.getStoredAccessToken();
 
     if (userToken === '') {

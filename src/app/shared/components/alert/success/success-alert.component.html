@@ -1,0 +1,9 @@
+<div class="main-container">
+  <div class="message">
+    <mat-icon class="success-icon">check_circle_outline</mat-icon>
+    <span>{{ data.text }}</span>
+  </div>
+  <div class="timeout">
+    <mat-progress-bar mode="determinate" [value]="countdown"></mat-progress-bar>
+  </div>
+</div>

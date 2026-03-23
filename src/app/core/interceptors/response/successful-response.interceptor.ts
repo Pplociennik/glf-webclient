@@ -3,6 +3,7 @@ import { inject } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { UserTokenManagementService } from '../../../services/user-token-management-service';
 import { Response, ResponseData } from '../../../shared/models/response/response.model';
+import { ResponseActionService } from '../../../services/response/response-action.service';
 
 /**
  * URLs that should not have token revalidation applied.
@@ -40,11 +41,17 @@ export function SuccessfulResponseInterceptor(
   }
 
   const tokenService = inject(UserTokenManagementService);
+  const actionService = inject(ResponseActionService);
 
   return next(request).pipe(
     tap((event) => {
       if (event instanceof HttpResponse && event.body) {
-        tokenService.revalidateAuthentication(event.body as Response<ResponseData>);
+        const response = event.body as Response<ResponseData>;
+        tokenService.revalidateAuthentication(response);
+
+        if (response.clientActionFlag) {
+          actionService.executeAction(response, response.clientActionFlag);
+        }
       }
     }),
   );

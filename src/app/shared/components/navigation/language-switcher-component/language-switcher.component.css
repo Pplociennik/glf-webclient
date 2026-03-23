@@ -1,0 +1,44 @@
+.language-switcher {
+  position: relative;
+  display: inline-block;
+  min-width: 120px;
+  height: 40px;
+}
+
+.language-switcher .language-select {
+  padding: 8px 32px 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #2d5016;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: border-color 0.2s, -webkit-box-shadow 0.2s;
+  transition: border-color 0.2s, -webkit-box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, -webkit-box-shadow 0.2s;
+}
+
+.language-switcher .language-select:hover {
+  border-color: #bdbdbd;
+}
+
+.language-switcher .language-select:focus {
+  border-color: #2d5016;
+  -webkit-box-shadow: 0 0 0 2px rgba(45, 80, 22, 0.2);
+          box-shadow: 0 0 0 2px rgba(45, 80, 22, 0.2);
+}
+
+@-moz-document url-prefix() {
+  .language-switcher .language-select {
+    text-indent: 0.01px;
+    text-overflow: '';
+  }
+}
+
+.language-switcher select::-ms-expand {
+  display: none;
+}
+/*# sourceMappingURL=language-switcher.component.css.map */

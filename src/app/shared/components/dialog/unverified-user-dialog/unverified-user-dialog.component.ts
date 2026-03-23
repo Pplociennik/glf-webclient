@@ -13,14 +13,7 @@ import { MatButton } from '@angular/material/button';
   selector: 'app-unverified-user-dialog',
   templateUrl: './unverified-user-dialog.component.html',
   styleUrls: ['./unverified-user-dialog.component.scss'],
-  imports: [
-    ConfirmationLinkRequestComponent,
-    TranslocoModule,
-    MatDialogContent,
-    MatDialogActions,
-    MatDialogClose,
-    MatButton,
-  ],
+  imports: [ConfirmationLinkRequestComponent, TranslocoModule, MatDialogContent],
 })
 export class UnverifiedUserDialogComponent {
   data = inject<{ emailAddress: string }>(MAT_DIALOG_DATA);

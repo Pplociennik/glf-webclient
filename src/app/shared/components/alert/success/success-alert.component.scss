@@ -1,0 +1,25 @@
+@use 'variables' as *;
+@use '@angular/material' as mat;
+
+.main-container {
+  position: relative;
+
+  .message {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 10px;
+
+    .success-icon {
+      color: $color-primary-dark;
+    }
+  }
+
+  .timeout {
+    @include mat.progress-bar-overrides(
+      (
+        active-indicator-color: $color-primary-dark,
+      )
+    );
+  }
+}

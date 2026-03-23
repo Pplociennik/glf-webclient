@@ -1,0 +1,78 @@
+<div class="main-container">
+  <div class="main-panel-container">
+    <div class="header-container">
+      <button class="back-btn" (click)="onBackBtnClick()">
+        <div class="btn-contents">
+          <mat-icon class="btn-icon">arrow_back</mat-icon>
+          <span>{{ 'accountManagement.header.backBtn' | transloco }}</span>
+        </div>
+      </button>
+      <h2>{{ 'accountsMenu.accountManagement' | transloco }}</h2>
+    </div>
+    <div class="operational-panel-container">
+      <mat-sidenav-container>
+        <mat-sidenav opened="true" mode="side" disableClose>
+          <div class="side-menu">
+            <button
+              class="side-menu-btn"
+              [disabled]="userDataBtnDisable"
+              routerLink="user-data"
+              routerLinkActive="active"
+              (click)="onUserDataBtnClick()"
+            >
+              <div class="btn-contents">
+                <mat-icon class="btn-icon">account_box</mat-icon>
+                <span>{{ 'accountManagement.menu.userData' | transloco }}</span>
+              </div>
+            </button>
+            <button
+              class="side-menu-btn"
+              [disabled]="securityBtnDisabled"
+              routerLink="security"
+              routerLinkActive="active"
+              (click)="onSecurityBtnClick()"
+            >
+              <div class="btn-contents">
+                <mat-icon class="btn-icon">security</mat-icon>
+                <span>{{ 'accountManagement.menu.accountSecurity' | transloco }}</span>
+              </div>
+            </button>
+            <button
+              class="side-menu-btn"
+              [disabled]="socialBtnDisabled"
+              routerLink="social"
+              routerLinkActive="active"
+              (click)="onSocialBtnClick()"
+            >
+              <div class="btn-contents">
+                <mat-icon class="btn-icon">people</mat-icon>
+                <span>{{ 'accountManagement.menu.social' | transloco }}</span>
+              </div>
+            </button>
+            <button
+              class="delete-account-btn"
+              [disabled]="deleteAccountBtnDisabled"
+              routerLink="delete-account"
+              routerLinkActive="active"
+              (click)="onDeleteAccountBtnClick()"
+            >
+              <div class="btn-contents">
+                <mat-icon class="btn-icon">delete_forever</mat-icon>
+                <span>{{ 'accountManagement.menu.deleteAccount' | transloco }}</span>
+              </div>
+            </button>
+          </div>
+          <div class="user-badge">
+            <div class="user-data">
+              <img
+                src="https://www.vhv.rs/dpng/d/256-2569650_men-profile-icon-png-image-free-download-searchpng.png"
+              />
+              <span>{{ username }}</span>
+            </div>
+          </div>
+        </mat-sidenav>
+        <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
+      </mat-sidenav-container>
+    </div>
+  </div>
+</div>

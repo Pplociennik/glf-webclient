@@ -1,9 +1,9 @@
 /**
  * API paths to REST controllers.
  * These paths correspond to @RequestMapping values in backend controllers.
- * Use with environment.baseUrl and environment.endpoints to build full URLs.
+ * Use with environment.baseUrl and Endpoints to build full URLs.
  *
- * Example: ${environment.baseUrl}${ApiPaths.Auth}${environment.endpoints.login}
+ * Example: ${environment.baseUrl}${ApiPaths.Auth}${Endpoints.Login}
  * Result: http://localhost:8072/glf-accounts/api/auth/login
  */
 export enum ApiPaths {
@@ -18,4 +18,6 @@ export enum ApiPaths {
 
   // glf-communities service - CommunityController
   Communities = '/glf-communities/api/communities',
+
+  Sessions = '/glf-accounts/api/sessions',
 }

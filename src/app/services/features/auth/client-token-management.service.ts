@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, firstValueFrom } from 'rxjs';
 import { environment } from '../../../../environments/environment';
+import { Endpoints } from '../../../enums/Endpoints';
 import { ClientAuthRequest } from '../../../shared/models/auth/client-auth-request';
 import { KeycloakTokenResponse } from '../../../shared/models/auth/keycloak-token-response';
 
@@ -13,11 +14,10 @@ import { KeycloakTokenResponse } from '../../../shared/models/auth/keycloak-toke
   providedIn: 'root',
 })
 export class ClientTokenManagementService {
-  // Moved from AuthService
-  private readonly clientId = 'goaleaf_angular_client';
-  private readonly clientSecret = 'a4UCZiHzd9XXzQRxeUgvrRlD0HKU5K1v';
-  private readonly grantType = 'client_credentials';
-  private readonly scope = 'openid email profile roles service_account';
+  private readonly clientId = environment.keycloakClientId;
+  private readonly clientSecret = environment.keycloakClientSecret;
+  private readonly grantType = environment.keycloakGrantType;
+  private readonly scope = environment.keycloakScope;
 
   // localStorage keys
   private readonly ACCESS_TOKEN_KEY = 'keycloak_access_token';
@@ -59,7 +59,7 @@ export class ClientTokenManagementService {
    * Moved from AuthService.
    */
   private authorizeClient(): Observable<KeycloakTokenResponse> {
-    const url = `${environment.keycloakUrl}${environment.endpoints.keycloakClientAuth}`;
+    const url = `${environment.keycloakUrl}${Endpoints.KeycloakClientAuth}`;
 
     // OAuth2 token endpoint requires application/x-www-form-urlencoded
     const body = new URLSearchParams();

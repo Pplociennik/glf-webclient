@@ -87,5 +87,60 @@
       "titleText": "Your email address has not been verified yet",
       "mainText": "To send a new confirmation link, click "
     }
+  },
+  "accountManagement": {
+    "header": {
+      "backBtn": "Dashboard"
+    },
+    "menu": {
+      "userData": "User data",
+      "accountSecurity": "Account security",
+      "social": "Social",
+      "deleteAccount": "Delete account"
+    },
+    "deleteAccount": {
+      "title": "Confirm",
+      "mainMessage": "Are you sure you want to delete your account and all associated data? Deleting your account is permanent and cannot be undone.",
+      "acceptButton": "YES",
+      "denyButton": "NO"
+    },
+    "accountSecurity": {
+      "title": "Your active sessions",
+      "sessions": {
+        "start": "Start",
+        "lastActivity": "Last activity",
+        "device": "Device",
+        "location": "Location",
+        "currentSession": "Current session",
+        "action": "Action",
+        "closeSession": "Close",
+        "closeAll": "Close all"
+      },
+      "changePassword": {
+        "title": "Change your password",
+        "warningText": "Warning! Remember changing you password will close all you active sessions and you will need to log in again.",
+        "confirmButton": "Confirm",
+        "currentPassword": {
+          "header": "Current password",
+          "placeholder": "Enter your current password",
+          "requirement": "This field cannot be empty"
+        },
+        "newPassword": {
+          "header": "New password",
+          "placeholder": "Enter a new password",
+          "requirements": {
+            "differentThatCurrent": "New password must be different from the current password"
+          }
+        },
+        "confirmNewPassword": {
+          "header": "Repeat new password",
+          "placeholder": "Repeat the new password"
+        },
+        "alerts": {
+          "success": "You have been logged out. Please log in again using your new password.",
+          "error": "An error occurred"
+        }
+      }
+    }
   }
 }

@@ -87,5 +87,60 @@
       "titleText": "Twój adres email nie został jeszcze zweryfikowany",
       "mainText": "Aby wysłać nowy link potwierdzający, kliknij "
     }
+  },
+  "accountManagement": {
+    "header": {
+      "backBtn": "Kokpit"
+    },
+    "menu": {
+      "userData": "Dane użytkownika",
+      "accountSecurity": "Bezpieczeństwo konta",
+      "social": "Społeczność",
+      "deleteAccount": "Usuń konto"
+    },
+    "deleteAccount": {
+      "title": "Potwierdź",
+      "mainMessage": "Czy na pewno chcesz usunąć swoje konto oraz wszystkie powiązane z nim dane? Usuniecie konta jest permanentne i nie można tego cofnąć.",
+      "acceptButton": "TAK",
+      "denyButton": "NIE"
+    },
+    "accountSecurity": {
+      "title": "Twoje aktywne sesje",
+      "sessions": {
+        "start": "Początek",
+        "lastActivity": "Ostatnia aktywność",
+        "device": "Urządzenie",
+        "location": "Lokalizacja",
+        "currentSession": "Aktualna sesja",
+        "action": "Akcja",
+        "closeSession": "Zakończ",
+        "closeAll": "Zakończ wszystkie"
+      },
+      "changePassword": {
+        "title": "Zmień swoje hasło",
+        "warningText": "Uwaga! Pamiętaj, że zmiana hasła zamknie wszystkie Twoje aktywne sesje i będziesz musiał zalogować się ponownie.",
+        "confirmButton": "Potwierdź",
+        "currentPassword": {
+          "header": "Obecne hasło",
+          "placeholder": "Podaj obecne hasło",
+          "requirement": "Pole nie może być puste"
+        },
+        "newPassword": {
+          "header": "Nowe hasło",
+          "placeholder": "Podaj nowe hasło",
+          "requirements": {
+            "differentThatCurrent": "Nowe hasło musi być inne niż aktualne hasło"
+          }
+        },
+        "confirmNewPassword": {
+          "header": "Powtórz nowe hasło",
+          "placeholder": "Powtórz nowe hasło"
+        },
+        "alerts": {
+          "success": "Zostałeś wylogowany. Zaloguj się ponownie używając nowego hasła.",
+          "error": "Wystąpił błąd"
+        }
+      }
+    }
   }
 }

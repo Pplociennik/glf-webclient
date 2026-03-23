@@ -1,15 +1,4 @@
-// Variables
-$color-primary: #2d5016;
-$color-primary-dark: #1f3a0f;
-$color-text: #2d5016;
-$color-text-light: #666;
-$color-border: #ccc;
-$color-placeholder: #aaa;
-$color-error: #dc3545;
-$color-white: #fff;
-$shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
-$shadow-focus: 0 0 0 2px rgba(45, 80, 22, 0.15);
-$transition: all 0.3s ease;
+@use 'variables' as *;
 
 // Mixins
 @mixin input-icon {

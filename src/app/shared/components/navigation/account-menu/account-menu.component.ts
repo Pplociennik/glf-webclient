@@ -54,4 +54,8 @@ export class AccountMenuComponent {
   changeLanguage(language: string): void {
     this.languageService.switchLanguage(language);
   }
+
+  goToAccountManagement() {
+    this.router.navigate(['/account']);
+  }
 }

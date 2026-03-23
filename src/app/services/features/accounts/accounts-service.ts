@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { ApiPaths } from '../../../enums/ApiPaths';
+import { Endpoints } from '../../../enums/Endpoints';
 import { PasswordResetRequest } from '../../../shared/models/auth/password-reset-request';
 import { Response } from '../../../shared/models/response/response.model';
+import { PasswordChangeRequestMomdel } from '../../../shared/models/accounts/change-password-request.model';
 
 /**
  * Service for account management operations.
@@ -25,7 +27,17 @@ export class AccountsService {
    * @returns Observable containing the password reset response
    */
   resetPassword(requestModel: PasswordResetRequest): Observable<Response<void>> {
-    const url = `${this.baseUrl}${environment.endpoints.passwordReset}`;
+    const url = `${this.baseUrl}${Endpoints.PasswordReset}`;
     return this.httpClient.post<Response<void>>(url, requestModel);
+  }
+
+  deleteAccount(): Observable<Response<void>> {
+    const url = `${this.baseUrl}${Endpoints.DeleteAccount}`;
+    return this.httpClient.delete<Response<void>>(url);
+  }
+
+  changePassword(reuqestData: PasswordChangeRequestMomdel): Observable<Response<void>> {
+    const url = `${this.baseUrl}${Endpoints.PasswordChange}`;
+    return this.httpClient.post<Response<void>>(url, reuqestData);
   }
 }

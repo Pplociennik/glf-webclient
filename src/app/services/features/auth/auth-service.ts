@@ -5,6 +5,7 @@ import { RegistrationModel } from '../../../shared/models/auth/registration-mode
 import { Response, ResponseData } from '../../../shared/models/response/response.model';
 import { environment } from '../../../../environments/environment';
 import { ApiPaths } from '../../../enums/ApiPaths';
+import { Endpoints } from '../../../enums/Endpoints';
 import { LoginModel } from '../../../shared/models/auth/authentication-request-model';
 import { ConfirmationLinkRequest } from '../../../shared/models/auth/confirmation-link-request';
 
@@ -27,7 +28,7 @@ export class AuthService {
    * @returns Observable containing the registration response
    */
   register(registrationModel: RegistrationModel): Observable<Response<void>> {
-    const url = `${this.baseUrl}${environment.endpoints.register}`;
+    const url = `${this.baseUrl}${Endpoints.Register}`;
     return this.httpClient.post<Response<void>>(url, registrationModel);
   }
 
@@ -37,7 +38,7 @@ export class AuthService {
    * @returns Observable containing the authentication response
    */
   login(authRequestModel: LoginModel): Observable<Response<ResponseData>> {
-    const url = `${this.baseUrl}${environment.endpoints.login}`;
+    const url = `${this.baseUrl}${Endpoints.Login}`;
     return this.httpClient.post<Response<ResponseData>>(url, authRequestModel);
   }
 
@@ -47,7 +48,7 @@ export class AuthService {
    * @returns Observable containing the confirmation link request response
    */
   requestConfirmationLink(linkRequestModel: ConfirmationLinkRequest): Observable<Response<void>> {
-    const url = `${environment.baseUrl}${ApiPaths.Accounts}${environment.endpoints.emailConfirmationRequest}`;
+    const url = `${environment.baseUrl}${ApiPaths.Accounts}${Endpoints.EmailConfirmationRequest}`;
     return this.httpClient.post<Response<void>>(url, linkRequestModel);
   }
 
@@ -56,7 +57,17 @@ export class AuthService {
    * @returns Observable containing the logout response
    */
   logoutCurrentUserSession(): Observable<Response<void>> {
-    const url = `${environment.baseUrl}${ApiPaths.Auth}${environment.endpoints.logout}`;
+    const url = `${environment.baseUrl}${ApiPaths.Auth}${Endpoints.Logout}`;
     return this.httpClient.delete<Response<void>>(url);
+  }
+
+  logoutSpecificUserSession(sessionId: string): Observable<Response<void>> {
+    const url = `${this.baseUrl}${Endpoints.LogoutSession}`;
+    return this.httpClient.delete<Response<void>>(url, { params: { sessionId } });
+  }
+
+  logoutAllUserSessions() {
+    const url = `${this.baseUrl}${Endpoints.LogoutAll}`;
+    return this.httpClient.post<Response<void>>(url, {});
   }
 }

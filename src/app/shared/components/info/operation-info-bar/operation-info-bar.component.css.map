@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "operation-info-bar.component.scss"
+    ],
+    "names": [],
+    "file": "operation-info-bar.component.css"
+}
