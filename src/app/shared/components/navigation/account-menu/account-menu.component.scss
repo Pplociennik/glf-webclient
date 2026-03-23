@@ -1,19 +1,4 @@
-@use '@angular/material' as mat;
-
-/* Angular Material - Menu Overrides */
-::ng-deep .accounts-menu {
-  @include mat.menu-overrides(
-    (
-      container-shape: 0px,
-      item-hover-state-layer-color: rgb(184, 212, 184),
-      item-focus-state-layer-color: rgb(184, 212, 184),
-    )
-  );
-
-  .mat-mdc-menu-submenu-icon {
-    display: none;
-  }
-}
+@use 'variables' as *;
 
 .logout-menu-item {
   border-top: 2px solid lightgray;

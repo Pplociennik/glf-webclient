@@ -211,3 +211,20 @@ body {
     )
   );
 }
+
+// menus
+
+.accounts-menu {
+  @include mat.menu-overrides(
+    (
+      container-shape: 0px,
+      container-color: #f8f6f0,
+      item-hover-state-layer-color: rgb(184, 212, 184),
+      item-focus-state-layer-color: rgb(184, 212, 184),
+    )
+  );
+
+  .mat-mdc-menu-submenu-icon {
+    display: none;
+  }
+}
