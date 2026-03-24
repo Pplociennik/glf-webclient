@@ -5,10 +5,9 @@ import { Injectable } from '@angular/core';
  * Ensures passwords meet complexity and length requirements.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PasswordInputValidator {
-
   /**
    * Validates that the password has at least 8 characters.
    * @param password - The password string to validate
@@ -19,12 +18,12 @@ export class PasswordInputValidator {
   }
 
   /**
-   * Validates that the password does not exceed 256 characters.
+   * Validates that the password does not exceed 100 characters.
    * @param password - The password string to validate
    * @returns True if the password meets maximum length requirement
    */
   validatePasswordMaximumLength(password: string): boolean {
-    return password.length <= 256;
+    return password.length <= 100;
   }
 
   /**
@@ -66,5 +65,4 @@ export class PasswordInputValidator {
     const regex = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/;
     return regex.test(password);
   }
-
 }
