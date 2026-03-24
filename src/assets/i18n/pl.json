@@ -56,7 +56,8 @@
       "uppercaseLetter": "Minimalnie jedna duża litera",
       "lowercaseLetter": "Minimalnie jedna mała litera",
       "number": "Minimalnie jedna cyfra",
-      "specialCharacter": "Minimalnie jeden znak specjalny"
+      "specialCharacter": "Minimalnie jeden znak specjalny",
+      "usernameNotContained": "Nie może zawierać nazwy użytkownika"
     },
     "confirmPassword": {
       "match": "Hasła muszą być identyczne"
