@@ -187,6 +187,11 @@ export class RegistrationComponent {
         validator: this.passwordInputValidator.validateAtLeastOneSpecialCharacter,
         isValid: false,
       },
+      {
+        description: 'registrationRequirements.password.usernameNotContained',
+        validator: (password: string) => this.validatePasswordNotContainsUsername(password),
+        isValid: this.validatePasswordNotContainsUsername(this.password),
+      },
     ];
 
     this.confirmPasswordRequirements = [
@@ -196,6 +201,13 @@ export class RegistrationComponent {
         isValid: this.password === this.confirmPassword,
       },
     ];
+  }
+
+  validatePasswordNotContainsUsername(password: string): boolean {
+    if (!this.username) {
+      return true;
+    }
+    return !password.includes(this.username);
   }
 
   /**

@@ -56,7 +56,8 @@
       "uppercaseLetter": "Mindestens eine Großbuchstaben",
       "lowercaseLetter": "Mindestens eine Kleinbuchstaben",
       "number": "Mindestens eine Nummer",
-      "specialCharacter": "Mindestens ein Sonderzeichen"
+      "specialCharacter": "Mindestens ein Sonderzeichen",
+      "usernameNotContained": "Darf den Benutzernamen nicht enthalten"
     },
     "confirmPassword": {
       "match": "Passwörter müssen übereinstimmen"

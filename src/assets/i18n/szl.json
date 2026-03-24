@@ -56,7 +56,8 @@
       "uppercaseLetter": "Minimalnie jedna wielgŏ litera",
       "lowercaseLetter": "Minimalnie jedna małŏ litera",
       "number": "Minimalnie jedna cyfra",
-      "specialCharacter": "Minimalnie jeden znocek specjalny"
+      "specialCharacter": "Minimalnie jeden znocek specjalny",
+      "usernameNotContained": "Niy może zawierać miana użytkownika"
     },
     "confirmPassword": {
       "match": "Hasła muszōm być take same"

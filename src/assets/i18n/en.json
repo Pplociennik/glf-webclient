@@ -56,7 +56,8 @@
       "uppercaseLetter": "At least one uppercase letter",
       "lowercaseLetter": "At least one lowercase letter",
       "number": "At least one number",
-      "specialCharacter": "At least one special character"
+      "specialCharacter": "At least one special character",
+      "usernameNotContained": "Must not contain your username"
     },
     "confirmPassword": {
       "match": "Passwords must match"
