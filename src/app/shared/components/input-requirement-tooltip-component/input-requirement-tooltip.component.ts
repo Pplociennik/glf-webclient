@@ -11,12 +11,12 @@ import { TranslocoModule } from '@ngneat/transloco';
   standalone: true,
   imports: [TranslocoModule],
   templateUrl: './input-requirement-tooltip.component.html',
-  styleUrl: './input-requirement-tooltip.component.scss'
+  styleUrl: './input-requirement-tooltip.component.scss',
 })
 export class InputRequirementTooltipComponent {
   @Input() showTooltip!: boolean;
   @Output() validityChange = new EventEmitter<boolean>();
-  
+
   private _requirements: InputRequirementModel[] = [];
   private _value: string = '';
 
@@ -56,12 +56,10 @@ export class InputRequirementTooltipComponent {
     if (!this._requirements?.length) return;
 
     this._requirements.forEach((requirement) => {
-      const isValid = requirement.validator(value);
-      requirement.isValid = isValid;
-      this.isValid = isValid;
+      requirement.isValid = requirement.validator(value);
     });
 
+    this.isValid = this._requirements.every((req) => req.isValid);
     this.emitValidity();
   }
 }
-

@@ -52,7 +52,7 @@
     },
     "password": {
       "minimumLength": "Minimalnie 8 znaków",
-      "maximumLength": "Maksymalnie 256 znaków",
+      "maximumLength": "Maksymalnie 100 znaków",
       "uppercaseLetter": "Minimalnie jedna duża litera",
       "lowercaseLetter": "Minimalnie jedna mała litera",
       "number": "Minimalnie jedna cyfra",
