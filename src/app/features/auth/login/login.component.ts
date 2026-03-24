@@ -52,6 +52,8 @@ export class LoginComponent implements OnInit {
   showEmailTooltip: boolean = false;
   showPasswordTooltip: boolean = false;
 
+  loading: boolean = false;
+
   private userLocation: string = '';
 
   constructor(
@@ -133,6 +135,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    this.loading = true;
     this.buttonActive = false;
     const loginData: LoginModel = {
       email: this.email,
@@ -154,6 +157,7 @@ export class LoginComponent implements OnInit {
         this.email = '';
         this.password = '';
         this.buttonActive = true;
+        this.loading = false;
       },
     });
   }

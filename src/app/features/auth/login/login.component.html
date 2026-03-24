@@ -6,7 +6,11 @@
     <div class="welcome-sub-text">{{ 'loginComponent.welcomeSubText' | transloco }}</div>
 
     @if (showError) {
-    <app-operation-info-bar [show]="true" [success]="operationSuccess" [labelText]="errorMessage" />
+      <app-operation-info-bar
+        [show]="true"
+        [success]="operationSuccess"
+        [labelText]="errorMessage"
+      />
     }
 
     <div class="inputs-section">
@@ -53,19 +57,19 @@
               alt="password-icon"
             />
             @if (!showPassword) {
-            <img
-              class="eye-icon"
-              src="/icons/login-component/view.png"
-              alt="view-icon"
-              (click)="togglePasswordVisibility()"
-            />
+              <img
+                class="eye-icon"
+                src="/icons/login-component/view.png"
+                alt="view-icon"
+                (click)="togglePasswordVisibility()"
+              />
             } @else {
-            <img
-              class="eye-icon"
-              src="/icons/login-component/hide.png"
-              alt="hide-icon"
-              (click)="togglePasswordVisibility()"
-            />
+              <img
+                class="eye-icon"
+                src="/icons/login-component/hide.png"
+                alt="hide-icon"
+                (click)="togglePasswordVisibility()"
+              />
             }
           </span>
         </div>
@@ -81,11 +85,16 @@
         <a routerLink="/password-reset">{{ 'loginComponent.forgotPassword' | transloco }}</a>
       </div>
 
-      <button class="login-button" type="submit" [disabled]="!buttonActive">
+      <button
+        class="login-button"
+        type="submit"
+        [disabled]="!buttonActive"
+        [class.spinner]="loading"
+      >
         {{ 'loginComponent.loginButton' | transloco }}
-          @if (!isFormValid) {
+        @if (!isFormValid) {
           <span class="tooltip">{{ 'loginComponent.loginButtonTooltip' | transloco }}</span>
-          }
+        }
       </button>
     </div>
 
