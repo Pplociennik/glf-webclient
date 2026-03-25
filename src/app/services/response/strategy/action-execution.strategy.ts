@@ -4,6 +4,7 @@ import { DialogService } from '../../gui/dialog.service';
 import { Response } from '../../../shared/models/response/response.model';
 import { UserTokenManagementService } from '../../user-token-management-service';
 import { Router } from '@angular/router';
+import { AlertService } from '../../gui/alert.service';
 
 export interface ActionExecutionStrategy<T> {
   execute(data: T): void;
@@ -50,5 +51,23 @@ export class ClearSessionDataAndReloginStrategy implements ActionExecutionStrate
   execute(data: Response<void>): void {
     this.userTokenService.clearToken();
     this.router.navigate(['/login']);
+  }
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AccountAlreadyVerifiedStrategy implements ActionExecutionStrategy<
+  ErrorResponse<void>
+> {
+  constructor(
+    private router: Router,
+    private alertService: AlertService,
+  ) {}
+
+  execute(data: ErrorResponse<void>): void {
+    const errorMessage = data.errorMessage;
+    this.router.navigate(['/']);
+    this.alertService.openErrorAlert(errorMessage);
   }
 }

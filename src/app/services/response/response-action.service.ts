@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
+  AccountAlreadyVerifiedStrategy,
   ClearSessionDataAndReloginStrategy,
   ClearUserSessionDataStrategy,
   VerifyUserEmailStrategy,
@@ -21,6 +22,7 @@ export class ResponseActionService {
     private verifyUserEmailStrategy: VerifyUserEmailStrategy,
     private clearUserSessionDataStrategy: ClearUserSessionDataStrategy,
     private clearSessionDataAndReloginStrategy: ClearSessionDataAndReloginStrategy,
+    private accountAlreadyVerifiedStrategy: AccountAlreadyVerifiedStrategy,
   ) {}
 
   executeAction(data: unknown, actionKey: string) {
@@ -38,6 +40,11 @@ export class ResponseActionService {
       case ResponseActionKeys.USER_PASSWORD_CHANGED: {
         const typedData = data as Response<void>;
         this.clearSessionDataAndReloginStrategy.execute(typedData);
+        break;
+      }
+      case ResponseActionKeys.ACCOUNT_ALREADY_VERIFIED: {
+        const typedData = data as ErrorResponse<void>;
+        this.accountAlreadyVerifiedStrategy.execute(typedData);
         break;
       }
     }
