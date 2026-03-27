@@ -46,7 +46,7 @@ export function ErrorResponseInterceptor(
   return next(request).pipe(
     catchError((error: HttpErrorResponse) => {
       const errorResponse = error.error as ErrorResponse<string> | undefined;
-      const actionFlag = errorResponse?.clientActionFlag;
+      const actionFlag = errorResponse?.serverEventFlag;
 
       if (actionFlag) {
         actionService.executeAction(errorResponse!, actionFlag);

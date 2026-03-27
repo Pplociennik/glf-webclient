@@ -141,6 +141,11 @@
           "success": "Sie wurden abgemeldet. Bitte melden Sie sich erneut mit Ihrem neuen Passwort an.",
           "error": "Ein Fehler ist aufgetreten"
         }
+      },
+      "alerts": {
+        "userLoggedOutImplicitly": "Sie wurden abgemeldet",
+        "otherUserSessionClosed": "Die Sitzung wurde geschlossen",
+        "userLoggedOutExplicitly": "Ihre Sitzung wurde automatisch geschlossen"
       }
     }
   }

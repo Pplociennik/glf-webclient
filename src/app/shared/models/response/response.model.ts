@@ -29,5 +29,5 @@ export interface Response<T> {
   statusInfo: StatusInfo;
   responseData?: T[];
   tokenInfo: TokenInfo;
-  clientActionFlag: string;
+  serverEventFlag: string;
 }

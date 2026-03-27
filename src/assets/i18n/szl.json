@@ -141,6 +141,11 @@
           "success": "Zostołeś wylogowany. Wloguj sie nazod używajōnc nowego hasła.",
           "error": "Wystōmpił feler"
         }
+      },
+      "alerts": {
+        "userLoggedOutImplicitly": "Zostołeś wylogowany",
+        "otherUserSessionClosed": "Sesyjo została zawarto",
+        "userLoggedOutExplicitly": "Twoja sesyjo została autōmatycznie zawarto"
       }
     }
   }

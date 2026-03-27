@@ -141,6 +141,11 @@
           "success": "Zostałeś wylogowany. Zaloguj się ponownie używając nowego hasła.",
           "error": "Wystąpił błąd"
         }
+      },
+      "alerts": {
+        "userLoggedOutImplicitly": "Zostałeś wylogowany",
+        "otherUserSessionClosed": "Sesja została zamknięta",
+        "userLoggedOutExplicitly": "Twoja sesja została automatycznie zamknięta"
       }
     }
   }

@@ -5,6 +5,7 @@ import { Response } from '../../../shared/models/response/response.model';
 import { UserTokenManagementService } from '../../user-token-management-service';
 import { Router } from '@angular/router';
 import { AlertService } from '../../gui/alert.service';
+import { TranslocoService } from '@ngneat/transloco';
 
 export interface ActionExecutionStrategy<T> {
   execute(data: T): void;
@@ -27,30 +28,44 @@ export class VerifyUserEmailStrategy implements ActionExecutionStrategy<ErrorRes
 @Injectable({
   providedIn: 'root',
 })
-export class ClearUserSessionDataStrategy implements ActionExecutionStrategy<Response<void>> {
+export class LogoutUserExplicitlyStrategy implements ActionExecutionStrategy<ErrorResponse<void>> {
   constructor(
     private userTokenService: UserTokenManagementService,
     private router: Router,
+    private alertService: AlertService,
+    private translocoService: TranslocoService,
   ) {}
 
-  execute(data: Response<void>): void {
+  execute(data: ErrorResponse<void>): void {
     this.userTokenService.clearToken();
     this.router.navigate(['/']);
+
+    const message = this.translocoService.translate(
+      'accountManagement.accountSecurity.alerts.userLoggedOutExplicitly',
+    );
+    this.alertService.openErrorAlert(message);
   }
 }
 
 @Injectable({
   providedIn: 'root',
 })
-export class ClearSessionDataAndReloginStrategy implements ActionExecutionStrategy<Response<void>> {
+export class LogoutUserImplicitlyStrategy implements ActionExecutionStrategy<Response<void>> {
   constructor(
     private userTokenService: UserTokenManagementService,
     private router: Router,
+    private alertService: AlertService,
+    private translocoService: TranslocoService,
   ) {}
 
   execute(data: Response<void>): void {
     this.userTokenService.clearToken();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
+
+    const message = this.translocoService.translate(
+      'accountManagement.accountSecurity.alerts.userLoggedOutImplicitly',
+    );
+    this.alertService.openSuccessAlert(message);
   }
 }
 
@@ -69,5 +84,22 @@ export class AccountAlreadyVerifiedStrategy implements ActionExecutionStrategy<
     const errorMessage = data.errorMessage;
     this.router.navigate(['/']);
     this.alertService.openErrorAlert(errorMessage);
+  }
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class CloseOtherUserSessionStrategy implements ActionExecutionStrategy<Response<void>> {
+  constructor(
+    private alertService: AlertService,
+    private translocoService: TranslocoService,
+  ) {}
+
+  execute(data: Response<void>): void {
+    const message = this.translocoService.translate(
+      'accountManagement.accountSecurity.alerts.otherUserSessionClosed',
+    );
+    this.alertService.openSuccessAlert(message);
   }
 }
