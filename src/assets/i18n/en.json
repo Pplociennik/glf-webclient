@@ -141,6 +141,11 @@
           "success": "You have been logged out. Please log in again using your new password.",
           "error": "An error occurred"
         }
+      },
+      "alerts": {
+        "userLoggedOutImplicitly": "You have been logged out",
+        "otherUserSessionClosed": "The session has been closed",
+        "userLoggedOutExplicitly": "Your session has been automatically closed"
       }
     }
   }

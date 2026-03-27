@@ -49,8 +49,8 @@ export function SuccessfulResponseInterceptor(
         const response = event.body as Response<ResponseData>;
         tokenService.revalidateAuthentication(response);
 
-        if (response.clientActionFlag) {
-          actionService.executeAction(response, response.clientActionFlag);
+        if (response.serverEventFlag) {
+          actionService.executeAction(response, response.serverEventFlag);
         }
       }
     }),

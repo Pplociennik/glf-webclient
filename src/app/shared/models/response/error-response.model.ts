@@ -3,6 +3,6 @@ export interface ErrorResponse<T> {
   errorCode: string;
   errorMessage: string;
   errorTime: string;
-  clientActionFlag: string;
+  serverEventFlag: string;
   responseData?: T[];
 }
