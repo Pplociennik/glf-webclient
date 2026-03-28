@@ -167,6 +167,11 @@
   background-color: white;
   border: 1px solid lightgray;
 
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+
   .btn-contents {
     left: 15px;
     position: absolute;
@@ -176,25 +181,17 @@
     align-items: center;
   }
 
-  &:disabled {
+  &.active-link {
     background-color: #1f3a0f;
     height: calc(8vh + 10px);
     width: calc(100% + 10px);
 
-    &:disabled span {
+    span {
       color: white;
     }
 
-    &:disabled .btn-icon {
+    .btn-icon {
       color: white;
-    }
-  }
-
-  &:enabled {
-    background-color: white;
-
-    &:enabled span {
-      color: $color-primary-dark;
     }
   }
 }
@@ -219,28 +216,25 @@
   flex-direction: row;
   border: 1px solid lightgray;
 
-  &:disabled {
+  .btn-icon {
+    color: red;
+  }
+
+  &.active-link {
     background-color: red;
-  }
 
-  &:disabled span {
-    color: white;
-  }
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
 
-  &:disabled .btn-icon {
-    color: white;
-  }
+    span {
+      color: white;
+    }
 
-  &:enabled {
-    background-color: white;
-  }
-
-  &:enabled span {
-    color: red;
-  }
-
-  &:enabled .btn-icon {
-    color: red;
+    .btn-icon {
+      color: white;
+    }
   }
 
   .btn-contents {
