@@ -53,3 +53,17 @@
     }
   }
 }
+
+@media (max-width: 1024px), (orientation: landscape) and (max-height: 500px) {
+  .main-container .main-panel-container .panel-content .buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .main-container .main-panel-container .panel-content .buttons .decision-btn {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

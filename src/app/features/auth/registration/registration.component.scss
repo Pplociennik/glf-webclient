@@ -81,10 +81,11 @@
   display: flex;
   position: relative;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100%;
   background: linear-gradient(135deg, #f8f6f0 0%, #e8f5e9 100%);
   padding: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
 }
 
 .registration-form {
@@ -368,12 +369,51 @@
 }
 
 // Responsive Adjustments
-@media (max-width: 480px) {
+@media (max-width: 1024px), (orientation: landscape) and (max-height: 500px) {
+  .registration-container {
+    padding: 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
   .registration-form {
-    padding: 2rem 1.5rem;
+    padding: 1rem 1.5rem;
+
+    .main-logo-img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
   }
 
   .welcome-text {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .welcome-sub-text {
+    font-size: 0.8rem;
+    padding-bottom: 0.75rem;
+  }
+
+  [class$='-section'] {
+    margin-bottom: 0.75rem;
+  }
+
+  input::placeholder {
+    font-size: 0.85rem;
+  }
+
+  .register-button-section {
+    margin-top: 0.75rem;
+
+    .register-button {
+      padding: 10px;
+    }
+  }
+
+  .login-link-section {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
   }
 }
