@@ -194,6 +194,16 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
+/* Ensure routed components fill the main area */
+main {
+  display: flex;
+  flex-direction: column;
+
+  > :not(router-outlet) {
+    flex: 1;
+  }
+}
+
 // alerts
 
 .error-snackbar-panel {

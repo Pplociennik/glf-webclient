@@ -4,6 +4,8 @@
   padding: 0.5rem 0;
   position: relative;
   display: block;
+  height: 3.5rem;
+  align-items: stretch;
   top: 0;
 
   .top-nav-content {
@@ -40,6 +42,17 @@
       gap: 16px;
       position: absolute;
       right: 40px;
+    }
+  }
+}
+
+@media (max-width: 1024px), (orientation: landscape) and (max-height: 500px) {
+  .top-nav .top-nav-content {
+    margin: 0 10px;
+    justify-content: space-between;
+
+    .nav-right {
+      position: static;
     }
   }
 }

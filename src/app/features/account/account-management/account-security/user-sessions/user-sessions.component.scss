@@ -59,3 +59,25 @@
     }
   }
 }
+
+@media (max-width: 1024px), (orientation: landscape) and (max-height: 500px) {
+  .main-container {
+    .mat-mdc-cell,
+    .mat-mdc-header-cell {
+      font-size: medium;
+    }
+  }
+
+  .main-container .close-all-btn {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 500px), (orientation: landscape) and (max-height: 500px) {
+  .main-container {
+    .mat-mdc-cell,
+    .mat-mdc-header-cell {
+      font-size: xx-small;
+    }
+  }
+}
